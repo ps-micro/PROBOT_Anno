@@ -1,0 +1,35 @@
+<library path="lib/libprobot_rviz_plugin">
+
+  <class name="probot_rviz_plugin/Toolbar"
+         type="probot_rviz_plugin::ToolbarPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for toolbar.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/Movement"
+         type="probot_rviz_plugin::MovementPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget allowing robot movement control.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/IO"
+         type="probot_rviz_plugin::IOPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for IO.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/Console"
+         type="probot_rviz_plugin::ConsolePanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for console.
+    </description>
+  </class>
+
+</library>

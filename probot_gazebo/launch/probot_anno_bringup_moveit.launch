@@ -1,0 +1,16 @@
+<launch>
+  
+    <!-- Launch Gazebo  -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_gazebo_world.launch" />
+
+    <!-- ros_control arm launch file -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_gazebo_states.launch" />   
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_trajectory_controller.launch" />
+
+    <!-- moveit launch file -->
+    <include file="$(find probot_anno_moveit_config)/launch/moveit_planning_execution.launch">
+        <arg name="gazebo" default="true" />
+    </include>
+</launch>
