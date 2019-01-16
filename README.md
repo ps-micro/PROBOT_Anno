@@ -10,7 +10,7 @@ Ubuntu Linux download:http://www.ubuntu.com/download/
 __ROS Install__  
 Choose any of the following ways to install:   
 1.Install ROS with [this tutorials](http://wiki.ros.org/kinetic/Installation/Ubuntu)   
-2.Install ROS with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/install.sh) (Option 0)  
+2.Install ROS with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/blob/master/install.sh) (Option 0)  
 
 __PROBOT Dependant Packages Install__  
 Choose any of the following ways to install:   
@@ -24,7 +24,7 @@ Choose any of the following ways to install:
     $ sudo apt-get install ros-${ROS_VERSION}-trac-ik-kinematics-plugin
     $ sudo apt-get install ros-${ROS_VERSION}-usb-cam
 
-2.Install with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/install.sh) (Option 1)  
+2.Install with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/blob/master/install.sh) (Option 1)  
 
 __PROBOT Packages Install__  
 Choose any of the following ways to install:   
@@ -36,7 +36,7 @@ Choose any of the following ways to install:
 - Set up workspace environment:   
 ```echo "source ~/WORKSPACE_PATH/install/setup.bash" >> ~/.bashrc```
 
-2.Install with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/install.sh) (Option 2) 
+2.Install with PROBOT [install.sh](https://github.com/ps-micro/probot_ros/blob/master/install.sh) (Option 2) 
 
 __MoveIt! with real Hardware__  
 There are launch files available to bringup a real robot.   
