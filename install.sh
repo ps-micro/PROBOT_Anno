@@ -70,13 +70,13 @@ install_ros()
 	sudo sh -c 'echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6'
 	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116		
-	sudo apt-get update
-	sudo apt-get install -y ros-${ROS_Ver}-desktop-full
+	sudo apt-get -y update
+	sudo apt-get -y install ros-${ROS_Ver}-desktop-full
 	sudo rosdep init
 	rosdep update
 	echo "source /opt/ros/${ROS_Ver}/setup.bash" >> ~/.bashrc
 	source /opt/ros/${ROS_Ver}/setup.bash
-	sudo apt-get install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
+	sudo apt-get -y install python-rosinstall python-rosinstall-generator python-wstool build-essential
 
     echo -e "${Green_font_prefix}ROS has installed finished.${Font_color_suffix}"
 }
@@ -86,12 +86,12 @@ install_probot_dependents()
 {
     echo -e "${Green_font_prefix}Install probot dependent packages ...${Font_color_suffix}"
 
-    sudo apt-get install ros-${ROS_Ver}-moveit-*
-    sudo apt-get install ros-${ROS_Ver}-industrial-*
-    sudo apt-get install ros-${ROS_Ver}-gazebo-ros-control
-    sudo apt-get install ros-${ROS_Ver}-ros-control ros-${ROS_Ver}-ros-controllers
-    sudo apt-get install ros-${ROS_Ver}-trac-ik-kinematics-plugin
-    sudo apt-get install ros-${ROS_Ver}-usb-cam
+    sudo apt-get -y install ros-${ROS_Ver}-moveit-*
+    sudo apt-get -y install ros-${ROS_Ver}-industrial-*
+    sudo apt-get -y install ros-${ROS_Ver}-gazebo-ros-control
+    sudo apt-get -y install ros-${ROS_Ver}-ros-control ros-${ROS_Ver}-ros-controllers
+    sudo apt-get -y install ros-${ROS_Ver}-trac-ik-kinematics-plugin
+    sudo apt-get -y install ros-${ROS_Ver}-usb-cam
 
     echo -e "${Green_font_prefix}Dependent packages have installed finished.${Font_color_suffix}"
 }
@@ -101,6 +101,7 @@ install_probot()
 {
     echo -e "${Green_font_prefix}Install probot packages ...${Font_color_suffix}"
 
+    rm -rf ~/probot_anno_ws
     mkdir ~/probot_anno_ws
     mkdir ~/probot_anno_ws/src
     mkdir ~/probot_anno_ws/src/probot_ros
@@ -110,6 +111,8 @@ install_probot()
     catkin_make install
 
 	echo "source ~/probot_anno_ws/install/setup.bash" >> ~/.bashrc
+
+	source ~/.bashrc
 
     echo -e "${Green_font_prefix}PROBOT has installed to $(pwd) 
 Please have a happy journey!${Font_color_suffix}"
