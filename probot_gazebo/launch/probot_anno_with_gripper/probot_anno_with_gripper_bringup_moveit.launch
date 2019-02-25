@@ -1,0 +1,15 @@
+<launch>
+  
+    <!-- Launch Gazebo  -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_with_gripper/probot_anno_with_gripper_gazebo_world.launch" />
+
+    <!-- ros_control arm launch file -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_with_gripper/probot_anno_with_gripper_gazebo_states.launch" />   
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include file="$(find probot_gazebo)/launch/probot_anno_with_gripper/probot_anno_with_gripper_trajectory_controller.launch" />
+
+    <!-- moveit launch file -->
+    <include file="$(find probot_anno_with_gripper_moveit_config)/launch/moveit_planning_execution.launch">
+    </include>
+</launch>

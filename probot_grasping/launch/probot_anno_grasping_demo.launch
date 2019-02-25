@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <include file="$(find probot_gazebo)/launch/probot_anno_with_gripper/probot_anno_with_gripper_bringup_moveit.launch" />
+
+    <node pkg="probot_grasping" name="graspingDemo" type="graspingDemo" output="screen">
+        <param name="table_length"          value="0.3"/>
+        <param name="table_breadth"         value="0.3"/>
+        <param name="pregrasp_x"            value="0.20"/>
+        <param name="pregrasp_y"            value="-0.17"/>
+        <param name="pregrasp_z"            value="0.28"/>
+    </node>
+
+</launch>

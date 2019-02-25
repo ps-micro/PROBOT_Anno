@@ -42,12 +42,12 @@ class MoveItIkDemo:
         arm.allow_replanning(True)
         
         # 设置位置(单位：米)和姿态（单位：弧度）的允许误差
-        arm.set_goal_position_tolerance(0.01)
-        arm.set_goal_orientation_tolerance(0.05)
+        arm.set_goal_position_tolerance(0.001)
+        arm.set_goal_orientation_tolerance(0.01)
        
         # 设置允许的最大速度和加速度
-        arm.set_max_acceleration_scaling_factor(0.2)
-        arm.set_max_velocity_scaling_factor(0.2)
+        arm.set_max_acceleration_scaling_factor(0.5)
+        arm.set_max_velocity_scaling_factor(0.5)
 
         # 控制机械臂先回到初始化位置
         arm.set_named_target('home')
@@ -79,6 +79,16 @@ class MoveItIkDemo:
         # 按照规划的运动路径控制机械臂运动
         arm.execute(traj)
         rospy.sleep(1)
+
+        # 控制机械臂终端向右移动5cm
+        # arm.shift_pose_target(1, 0.1, end_effector_link)
+        # arm.go()
+        # rospy.sleep(1)
+  
+        # 控制机械臂终端反向旋转90度
+        # arm.shift_pose_target(3, -1.57, end_effector_link)
+        # arm.go()
+        # rospy.sleep(1)
            
         # 控制机械臂回到初始化位置
         arm.set_named_target('home')

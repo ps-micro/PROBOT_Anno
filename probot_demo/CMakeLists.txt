@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(probot_demo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -10,6 +10,10 @@ project(probot_demo)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  moveit_msgs
+  moveit_ros_perception
+  moveit_ros_planning_interface
+  trajectory_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES probot_demo
-#  CATKIN_DEPENDS roscpp rospy
+   CATKIN_DEPENDS roscpp rospy moveit_core moveit_ros_planning_interface
 #  DEPENDS system_lib
 )
 
@@ -149,6 +153,30 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
+add_executable(moveit_random_demo src/moveit_random_demo.cpp)
+target_link_libraries(moveit_random_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_fk_demo src/moveit_fk_demo.cpp)
+target_link_libraries(moveit_fk_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_ik_demo src/moveit_ik_demo.cpp)
+target_link_libraries(moveit_ik_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_cartesian_demo src/moveit_cartesian_demo.cpp)
+target_link_libraries(moveit_cartesian_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_collision_demo src/moveit_collision_demo.cpp)
+target_link_libraries(moveit_collision_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_circle_demo src/moveit_circle_demo.cpp)
+target_link_libraries(moveit_circle_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_revise_trajectory_demo src/moveit_revise_trajectory_demo.cpp)
+target_link_libraries(moveit_revise_trajectory_demo ${catkin_LIBRARIES})
+
+add_executable(moveit_continue_trajectory_demo src/moveit_continue_trajectory_demo.cpp)
+target_link_libraries(moveit_continue_trajectory_demo ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############
@@ -184,12 +212,29 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 install(PROGRAMS 
-   scripts/moveit_cartesian_demo.py
    scripts/moveit_fk_demo.py
    scripts/moveit_ik_demo.py
+   scripts/moveit_cartesian_demo.py
+   scripts/moveit_attached_object_demo.py
+   scripts/moveit_circle_demo.py
+   scripts/moveit_revise_trejectory_demo.py
    scripts/probot_demo.py
    scripts/test_move.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(TARGETS
+   moveit_random_demo 
+   moveit_fk_demo 
+   moveit_ik_demo 
+   moveit_cartesian_demo
+   moveit_collision_demo 
+   moveit_circle_demo 
+   moveit_revise_trajectory_demo 
+   moveit_continue_trajectory_demo
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 #############

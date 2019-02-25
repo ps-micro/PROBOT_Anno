@@ -57,9 +57,9 @@
             <arg name="robot_ip" value="$(arg robot_ip)"/>
         </include>
 
-        <node name="probot_cmd_interface" pkg="probot_bringup" type="probot_cmd_interface" output="screen"/>
-        <node name="probot_io_interface"  pkg="probot_bringup" type="probot_io_interface" output="screen"/>
-        <node name="probot_log_interface" pkg="probot_bringup" type="probot_log_interface" output="screen"/>
+        <node name="probot_cmd_interface" pkg="probot_driver" type="probot_cmd_interface" output="screen"/>
+        <node name="probot_io_interface"  pkg="probot_driver" type="probot_io_interface" output="screen"/>
+        <node name="probot_log_interface" pkg="probot_driver" type="probot_log_interface" output="screen"/>
     </group>
 
 

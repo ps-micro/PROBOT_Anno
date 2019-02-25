@@ -3,6 +3,10 @@
 This repository provides ROS support for PROBOT.   
 This repo holds source code for ROS versions Kinetic.
 
+### __Wiki for PROBOT Packages__ 
+- http://wiki.ros.org/turtlebot3
+
+
 ### __Operating System Install__  
 Operating system version is not less than Ubuntu linux 14.04, both supports 32bit and 64bit system.
 Ubuntu Linux download:http://www.ubuntu.com/download/
@@ -54,12 +58,12 @@ __Install With Commands__
 
 3. Install PROBOT Packages:   
 - Set up a catkin workspace (see [this tutorials](http://wiki.ros.org/catkin/Tutorials)).
-- Clone the repository into the src/ folder  
+- Clone the repository into the src/ folder of workspace   
 - Use "catkin_make" to build workspace
-- Use "catkin_make install" to install librarys and packages
+- Copy probot_rviz_plugin/plugin/libprobot_rviz_plugin.so to 'WORKSPACE_PATH'/devel/lib
 - Set up environment variables:   
 ```
-$ echo "source ~/WORKSPACE_PATH/install/setup.bash" >> ~/.bashrc
+$ echo "source ~/'WORKSPACE_PATH'/install/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
@@ -77,6 +81,11 @@ There are launch files available to bringup a simulated robot.
 To bring up the simulated robot in Gazebo and moveit, run:   
 ```
 $ roslaunch probot_gazebo probot_bringup_moveit.launch
+```
+
+To bring up the grasping simulated demo, run:   
+```
+$ roslaunch probot_grasping probot_anno_grasping_demo.launch
 ```
 
 ### __MoveIt! with real Hardware__  

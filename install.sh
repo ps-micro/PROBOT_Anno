@@ -106,11 +106,14 @@ install_probot()
     mkdir ~/probot_anno_ws/src
     mkdir ~/probot_anno_ws/src/probot_ros
     mv * ~/probot_anno_ws/src/probot_ros
+    
+    chmod +x ~/probot_anno_ws/src/probot_ros/probot_demo/scripts/*
+
     cd ~/probot_anno_ws
     catkin_make
-    catkin_make install
 
-	echo "source ~/probot_anno_ws/install/setup.bash" >> ~/.bashrc
+    cp ~/probot_anno_ws/src/probot_ros/probot_rviz_plugin/plugin/libprobot_rviz_plugin.so ~/probot_anno_ws/devel/lib/libprobot_rviz_plugin.so
+	echo "source ~/probot_anno_ws/devel/setup.bash" >> ~/.bashrc
 
 	source ~/.bashrc
 

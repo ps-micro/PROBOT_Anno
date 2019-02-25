@@ -29,9 +29,6 @@ class ProbotDemo:
         # 初始化ROS节点
         rospy.init_node('probot_demo')
         
-        # 是否需要使用笛卡尔空间的运动规划
-        cartesian = rospy.get_param('~cartesian', True)
-        
         # 初始化需要使用move group控制的机械臂中的arm group
         arm = moveit_commander.MoveGroupCommander('manipulator')
                 
@@ -50,8 +47,8 @@ class ProbotDemo:
         arm.set_goal_orientation_tolerance(0.05)
        
         # 设置允许的最大速度和加速度
-        arm.set_max_acceleration_scaling_factor(0.1)
-        arm.set_max_velocity_scaling_factor(0.1)
+        arm.set_max_acceleration_scaling_factor(0.5)
+        arm.set_max_velocity_scaling_factor(0.5)
 
         # 控制机械臂先回到初始化位置
         arm.set_named_target('home')
@@ -90,8 +87,7 @@ class ProbotDemo:
         waypoints = []
                 
         # 将初始位姿加入路点列表
-        if cartesian:
-            waypoints.append(start_pose)
+        waypoints.append(start_pose)
             
         # 设置路点数据，并加入路点列表
         wpose = deepcopy(start_pose)
@@ -142,8 +138,8 @@ class ProbotDemo:
         else:
             rospy.loginfo("Path planning failed with only " + str(fraction) + " success after " + str(maxtries) + " attempts.")  
 
-        arm.set_max_acceleration_scaling_factor(0.2)
-        arm.set_max_velocity_scaling_factor(0.2)
+        arm.set_max_acceleration_scaling_factor(0.5)
+        arm.set_max_velocity_scaling_factor(0.5)
         
         target_position = [-0.012496701441705227, -0.41917115449905396, -0.19433578848838806, 0.018087295815348625, 2.2288901805877686, -0.013513846322894096]
         arm.set_joint_value_target(target_position)           

@@ -1,0 +1,25 @@
+probot_anno:
+  arm_joint_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+
+    gains:
+      joint_1:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint_2:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint_3:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint_4:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint_5:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      joint_6:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
+  gripper_joint_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - gripper_finger_joint
+    gains:
+      gripper_finger_joint:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
