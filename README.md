@@ -4,7 +4,7 @@ This repository provides ROS support for PROBOT.
 This repo holds source code for ROS versions Kinetic.
 
 ### __Wiki for PROBOT Packages__ 
-- http://wiki.ros.org/turtlebot3
+- http://wiki.ros.org/probot
 
 
 ### __Operating System Install__  
