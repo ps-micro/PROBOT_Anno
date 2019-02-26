@@ -105,7 +105,7 @@ install_probot()
     mkdir ~/probot_anno_ws
     mkdir ~/probot_anno_ws/src
     mkdir ~/probot_anno_ws/src/probot_ros
-    mv * ~/probot_anno_ws/src/probot_ros
+    cp -R * ~/probot_anno_ws/src/probot_ros
     
     chmod +x ~/probot_anno_ws/src/probot_ros/probot_demo/scripts/*
 
@@ -113,9 +113,9 @@ install_probot()
     catkin_make
 
     cp ~/probot_anno_ws/src/probot_ros/probot_rviz_plugin/plugin/libprobot_rviz_plugin.so ~/probot_anno_ws/devel/lib/libprobot_rviz_plugin.so
-	echo "source ~/probot_anno_ws/devel/setup.bash" >> ~/.bashrc
+    echo "source ~/probot_anno_ws/devel/setup.bash --extend" >> ~/.bashrc
 
-	source ~/.bashrc
+    source ~/.bashrc
 
     echo -e "${Green_font_prefix}PROBOT has installed to $(pwd) 
 Please have a happy journey!${Font_color_suffix}"
