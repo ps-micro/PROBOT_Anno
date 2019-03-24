@@ -1,10 +1,10 @@
 # PROBOT
 
-This repository provides ROS support for PROBOT.   
-This repo holds source code for ROS versions Kinetic.
+This repository provides ROS support for PROBOT Anno.   
+This repo holds source code for ROS versions Kinetic and Melodic.
 
-### __Wiki for PROBOT Packages__ 
-- http://wiki.ros.org/probot
+### __Wiki for PROBOT Anno Packages__ 
+- http://wiki.ros.org/Robots/PROBOT_Anno
 
 
 ### __Operating System Install__  
@@ -14,14 +14,14 @@ Ubuntu Linux download:http://www.ubuntu.com/download/
 Please install git and clone repo before the following steps:
 ```
 $ sudo apt-get install git
-$ git clone https://github.com/ps-micro/probot_ros
+$ git clone https://github.com/ps-micro/PROBOT_Anno
 ```
 
 ### __Setup Environment__
 Choose one of the following ways to install.
 
 __Install With Script(Recommended)__  
-1. Run PROBOT [install.sh](https://github.com/ps-micro/probot_ros/install.sh)
+1. Run PROBOT [install.sh](https://github.com/ps-micro/PROBOT_Anno/install.sh)
 ```
 PROBOT Setup Assistant[v1.0.0]
 ---- www.ps-micro.com ----
