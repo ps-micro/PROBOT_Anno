@@ -31,8 +31,8 @@ int main(int argc, char **argv)
 
     arm.setGoalJointTolerance(0.001);
 
-    double accScale = 0.2;
-    double velScale = 0.2;
+    double accScale = 0.8;
+    double velScale = 0.8;
     arm.setMaxAccelerationScalingFactor(accScale);
     arm.setMaxVelocityScalingFactor(velScale);
 
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     start_state->copyJointGroupPositions(joint_model_group, joint_group_positions);
 
     //设置第一个目标点
-    joint_group_positions[0] = -1.0;  // radians
+    joint_group_positions[0] = -0.6;  // radians
     arm.setJointValueTarget(joint_group_positions);
 
     // 计算第一条轨迹
@@ -61,7 +61,8 @@ int main(int argc, char **argv)
     arm.setStartState(*start_state);
 
     //设置第二个目标点
-    joint_group_positions[1] = -1.0;  // radians
+    joint_group_positions[0] = -1.2;  // radians
+    joint_group_positions[1] = -0.5;  // radians
     arm.setJointValueTarget(joint_group_positions);
 
     // 计算第二条轨迹
