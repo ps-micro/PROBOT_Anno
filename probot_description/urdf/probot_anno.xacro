@@ -13,8 +13,8 @@
   <link name="base_link">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0.017266 0 0" rpy="0 0 0" />
@@ -36,8 +36,8 @@
   <link name="link_1">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -66,8 +66,8 @@
   <link name="link_2">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -96,8 +96,8 @@
   <link name="link_3">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -126,8 +126,8 @@
   <link name="link_4">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -156,8 +156,8 @@
   <link name="link_5">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -186,8 +186,8 @@
   <link name="link_6">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="19.574" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="0.00001" />
+      <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />

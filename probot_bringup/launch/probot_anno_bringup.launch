@@ -50,7 +50,7 @@
     <group unless="$(arg sim)">
         <include file="$(find probot_anno_moveit_config)/launch/moveit_rviz.launch">
             <arg name="config" value="true"/>
-            <arg name="command_args" value="-d $(find probot_bringup)/config/moveit.rviz"/>
+            <arg name="command_args" value="-d $(find probot_bringup)/config/PROBOT_Anno.rviz"/>
         </include>
 
         <include file="$(find industrial_robot_client)/launch/robot_interface_download.launch">

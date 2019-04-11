@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 
     arm.setGoalJointTolerance(0.001);
 
-    arm.setMaxAccelerationScalingFactor(0.2);
-    arm.setMaxVelocityScalingFactor(0.2);
+    arm.setMaxAccelerationScalingFactor(0.5);
+    arm.setMaxVelocityScalingFactor(0.5);
 
     // 控制机械臂先回到初始化位置
     arm.setNamedTarget("home");

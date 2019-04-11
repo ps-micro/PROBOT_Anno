@@ -41,8 +41,8 @@ int main(int argc, char **argv)
     arm.setGoalOrientationTolerance(0.01);
 
     //设置允许的最大速度和加速度
-    arm.setMaxAccelerationScalingFactor(0.8);
-    arm.setMaxVelocityScalingFactor(0.8);
+    arm.setMaxAccelerationScalingFactor(0.5);
+    arm.setMaxVelocityScalingFactor(0.5);
 
     // 控制机械臂先回到初始化位置
     arm.setNamedTarget("home");

@@ -48,11 +48,13 @@ class MoveAttachedObjectDemo:
        
         # 当运动规划失败后，允许重新规划
         arm.allow_replanning(True)
-        arm.set_planning_time(10)
 
         # 控制机械臂回到初始化位置
         arm.set_named_target('home')
         arm.go()
+
+        # 设置每次运动规划的时间限制：10s
+        arm.set_planning_time(10)
         
         # 移除场景中之前运行残留的物体
         scene.remove_attached_object(end_effector_link, 'tool')
@@ -63,7 +65,7 @@ class MoveAttachedObjectDemo:
         table_ground = 0.6
         
         # 设置table和tool的三维尺寸
-        table_size = [0.1, 0.7, 0.01]
+        table_size = [0.1, 0.3, 0.02]
         tool_size = [0.2, 0.02, 0.02]
         
         # 设置tool的位姿
@@ -84,7 +86,7 @@ class MoveAttachedObjectDemo:
         # 将table加入场景当中
         table_pose = PoseStamped()
         table_pose.header.frame_id = 'base_link'
-        table_pose.pose.position.x = 0.25
+        table_pose.pose.position.x = 0.3
         table_pose.pose.position.y = 0.0
         table_pose.pose.position.z = table_ground + table_size[2] / 2.0
         table_pose.pose.orientation.w = 1.0

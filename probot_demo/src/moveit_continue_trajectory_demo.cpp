@@ -31,8 +31,8 @@ int main(int argc, char **argv)
 
     arm.setGoalJointTolerance(0.001);
 
-    double accScale = 0.8;
-    double velScale = 0.8;
+    double accScale = 0.5;
+    double velScale = 0.5;
     arm.setMaxAccelerationScalingFactor(accScale);
     arm.setMaxVelocityScalingFactor(velScale);
 

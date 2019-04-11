@@ -47,7 +47,7 @@ class MoveItCircleDemo:
         arm.set_goal_orientation_tolerance(0.001)
         
         # 设置允许的最大速度和加速度
-        arm.set_max_acceleration_scaling_factor(0.3)
+        arm.set_max_acceleration_scaling_factor(0.5)
         arm.set_max_velocity_scaling_factor(0.5)
         
         # 获取终端link的名称
