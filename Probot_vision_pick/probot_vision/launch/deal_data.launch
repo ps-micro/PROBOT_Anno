@@ -1,0 +1,11 @@
+<launch>
+
+  <include file="$(find probot_vision)/launch/usb_cam.launch" />
+
+  <node name="DealYaml" pkg="probot_vision" type="ReadAndWriteYaml.py" output="screen">
+  </node>
+
+  <node name="probot_computematrix" pkg="probot_vision" type="ComputeMapMatrix" output="screen">
+  </node>
+
+</launch>
