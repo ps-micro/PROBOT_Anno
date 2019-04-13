@@ -153,9 +153,6 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(moveit_random_demo src/moveit_random_demo.cpp)
-target_link_libraries(moveit_random_demo ${catkin_LIBRARIES})
-
 add_executable(moveit_fk_demo src/moveit_fk_demo.cpp)
 target_link_libraries(moveit_fk_demo ${catkin_LIBRARIES})
 
@@ -224,7 +221,6 @@ install(PROGRAMS
 )
 
 install(TARGETS
-   moveit_random_demo 
    moveit_fk_demo 
    moveit_ik_demo 
    moveit_cartesian_demo

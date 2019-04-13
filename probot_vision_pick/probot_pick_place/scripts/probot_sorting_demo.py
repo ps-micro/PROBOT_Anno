@@ -85,12 +85,12 @@ class ProbotSorting:
         self.moveTo(x, y, pickparam['hight'])
 
         ioOutput0 = SetOutputIO()
-        ioOutput0.ioNumber = 0
+        ioOutput0.ioNumber = 1
         ioOutput0.status = SetOutputIO.IO_HIGH
         self.ioPub.publish(ioOutput0)
         rospy.sleep(1)
         ioOutput1 = SetOutputIO()
-        ioOutput1.ioNumber = 1
+        ioOutput1.ioNumber = 2
         ioOutput1.status = SetOutputIO.IO_HIGH
         self.ioPub.publish(ioOutput1)
 
@@ -101,13 +101,13 @@ class ProbotSorting:
         rospy.sleep(0.3)
 
         ioOutput0 = SetOutputIO()
-        ioOutput0.ioNumber = 0
+        ioOutput0.ioNumber = 1
         ioOutput0.status = SetOutputIO.IO_LOW
         self.ioPub.publish(ioOutput0)
         rospy.sleep(1)
 
         ioOutput1 = SetOutputIO()
-        ioOutput1.ioNumber = 1
+        ioOutput1.ioNumber = 2
         ioOutput1.status = SetOutputIO.IO_LOW
         self.ioPub.publish(ioOutput1)
         rospy.sleep(1)
