@@ -3,6 +3,8 @@
 This repository provides ROS support for PROBOT Anno.   
 This repo holds source code for ROS versions Kinetic and Melodic.
 
+![PROBOT_Anno](docs/images/PROBOT_Anno.jpg)
+
 ### __Wiki for PROBOT Anno Packages__ 
 - http://wiki.ros.org/Robots/PROBOT_Anno
 
@@ -12,7 +14,7 @@ Operating system version is not less than Ubuntu linux 14.04, both supports 32bi
 Ubuntu Linux download:http://www.ubuntu.com/download/
 
 Please install git and clone repo before the following steps:
-```
+```sh
 $ sudo apt-get install git
 $ git clone https://github.com/ps-micro/PROBOT_Anno
 ```
@@ -22,7 +24,7 @@ Choose one of the following ways to install.
 
 __Install With Script(Recommended)__  
 1. Run PROBOT [install.sh](https://github.com/ps-micro/PROBOT_Anno/install.sh)
-```
+```sh
 PROBOT Setup Assistant[v1.0.0]
 ---- www.ps-micro.com ----
 
@@ -46,7 +48,7 @@ __Install With Commands__
 1. Install ROS Desktop-Full with [this tutorials](http://wiki.ros.org/kinetic/Installation/Ubuntu)   
 
 2. Install Dependant Packages:   
-```
+```sh
     $ ROS_VERSION=`/usr/bin/rosversion -d`   
     $ sudo apt-get install ros-${ROS_VERSION}-moveit-*   
     $ sudo apt-get install ros-${ROS_VERSION}-industrial-*   
@@ -62,7 +64,7 @@ __Install With Commands__
 - Use "catkin_make" to build workspace
 - Copy probot_rviz_plugin/plugin/libprobot_rviz_plugin.so to 'WORKSPACE_PATH'/devel/lib
 - Set up environment variables:   
-```
+```sh
 $ echo "source ~/'WORKSPACE_PATH'/install/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
@@ -71,7 +73,7 @@ $ source ~/.bashrc
 You can use MoveIt! to control the simulated robot. 
 
 For setting up the MoveIt! to allow motion planning run:   
-```
+```sh
 $ roslaunch probot_bringup probot_anno_bringup.launch sim:=true
 ```
 
@@ -79,12 +81,12 @@ $ roslaunch probot_bringup probot_anno_bringup.launch sim:=true
 There are launch files available to bringup a simulated robot.
 
 To bring up the simulated robot in Gazebo and moveit, run:   
-```
+```sh
 $ roslaunch probot_gazebo probot_anno_bringup_moveit.launch
 ```
 
 To bring up the grasping simulated demo, run:   
-```
+```sh
 $ roslaunch probot_grasping probot_anno_grasping_demo.launch
 ```
 
@@ -95,7 +97,7 @@ Don't forget to source the correct setup shell files and use a new terminal for 
 
 To bring up the real robot, then run:   
 
-```
+```sh
 $ roslaunch probot_bringup probot_anno_bringup.launch robot_ip:=192.168.2.123
 ```
 
@@ -103,7 +105,7 @@ You can use MoveIt! plugin to control the robot.
 
 Additionally, a simple test script that moves the robot to predefined positions can be executed like this:   
 
-```
+```sh
 $ rosrun probot_demo test_move.py
 ```
 
