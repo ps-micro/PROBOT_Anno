@@ -3,7 +3,7 @@
 This repository provides ROS support for PROBOT Anno.   
 This repo holds source code for ROS versions Kinetic and Melodic.
 
-![PROBOT_Anno](docs/images/PROBOT_Anno.jpg)
+![PROBOT_Anno](docs/images/PROBOT_Anno.png)
 
 ### __Wiki for PROBOT Anno Packages__ 
 - http://wiki.ros.org/Robots/PROBOT_Anno
