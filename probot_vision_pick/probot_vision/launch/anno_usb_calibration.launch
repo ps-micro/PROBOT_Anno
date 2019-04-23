@@ -1,0 +1,51 @@
+<launch>
+
+    <arg name="namespace_prefix" default="PROBOT_handeyecalibration" />
+
+    <arg name="robot_ip" doc="The IP address of the Anno robot" />
+
+    <arg name="marker_size" doc="Size of the ArUco marker used, in meters" default="0.1"/>
+    <arg name="marker_id" doc="The ID of the ArUco marker used" default="100"/>
+
+    <arg name="eye" default="left"/>
+    <!-- <arg name="marker_frame" default="aruco_marker_frame"/> -->
+
+    <!-- start the USB -->
+    <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+
+    <!-- start ArUco -->
+    <node name="aruco_tracker" pkg="aruco_ros" type="single">
+        <remap from="/camera_info" to="/usb_cam/camera_info" />
+        <remap from="/image" to="/usb_cam/image_raw" />
+        <param name="image_is_rectified" value="true"/>
+        <param name="marker_size"        value="$(arg marker_size)"/>
+        <param name="marker_id"          value="$(arg marker_id)"/>
+        <param name="reference_frame"    value="stereo_gazebo_$(arg eye)_camera_optical_frame"/>
+        <param name="camera_frame"       value="stereo_gazebo_$(arg eye)_camera_optical_frame"/>
+        <param name="marker_frame"       value="camera_marker" />
+    </node>
+
+    <!-- start the robot -->
+    <include file="$(find probot_bringup)/launch/probot_anno_bringup.launch" >
+        <arg name="robot_ip" value="192.168.2.123" />
+    </include>
+
+    <!-- <include file="$(find probot_anno_moveit_config)/launch/moveit_planning_execution.launch" /> -->
+
+    <!-- start easy_handeye -->
+    <include file="$(find easy_handeye)/launch/calibrate.launch" >
+        <arg name="namespace_prefix" value="$(arg namespace_prefix)" />
+        <arg name="eye_on_hand" value="false" />
+
+        <arg name="tracking_base_frame" value="stereo_gazebo_$(arg eye)_camera_optical_frame" />
+        <arg name="tracking_marker_frame" value="camera_marker" />
+        <arg name="robot_base_frame" value="base_link" />
+        <arg name="robot_effector_frame" value="tool0" />
+
+        <arg name="freehand_robot_movement" value="false" />
+        <arg name="robot_velocity_scaling" value="0.5" />
+        <arg name="robot_acceleration_scaling" value="0.2" />
+    </include>
+
+
+</launch>
