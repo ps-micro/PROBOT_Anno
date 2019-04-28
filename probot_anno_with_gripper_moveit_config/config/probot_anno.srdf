@@ -24,6 +24,15 @@
         <joint name="joint_5" value="0" />
         <joint name="joint_6" value="0" />
     </group_state>
+   <group_state name="start" group="manipulator">
+        <joint name="joint_1" value="0" />
+        <joint name="joint_2" value="0" />
+        <joint name="joint_3" value="1.5708" />
+        <joint name="joint_4" value="0" />
+        <joint name="joint_5" value="1.5708" />
+        <joint name="joint_6" value="0" />
+    </group_state>
+
     <group_state name="normal" group="gripper">
         <joint name="gripper_finger_joint" value="0" />
     </group_state>

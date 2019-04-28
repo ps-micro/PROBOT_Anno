@@ -216,6 +216,7 @@ install(PROGRAMS
    scripts/moveit_circle_demo.py
    scripts/moveit_revise_trejectory_demo.py
    scripts/probot_demo.py
+   scripts/probot_drawing.py
    scripts/test_move.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
