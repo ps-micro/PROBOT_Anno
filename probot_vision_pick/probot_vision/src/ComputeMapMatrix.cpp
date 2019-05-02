@@ -154,7 +154,7 @@ public:
     void dealdata()
     {
         ifstream f;
-        f.open("../works/src/Probot_vision_pick/probot_vision/config/readresult.txt");
+        f.open("../catkin_ws/src/PROBOT_Anno/probot_vision_pick/probot_vision/config/readresult.txt");
         //f.open("../catkin_ws/src/Probot_vision_pick/probot_vision/config/readresult.txt");
         string str;
       	while (getline(f, str))
