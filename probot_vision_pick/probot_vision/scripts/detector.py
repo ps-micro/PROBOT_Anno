@@ -104,7 +104,7 @@ def myexecute(image,param, objType,hmatrix,xmatrix,image_params):
        
         cv2.circle(image, (cX, cY), 3, (255, 255, 255), -1)
         
-        if objPose1.position.y < image_params['boundary']
+        if objPose1.position.y < image_params['boundary']:
             objectList.append(objPose1)
 
     cv2.namedWindow('image')

@@ -180,11 +180,11 @@ public:
         }
         for(int i = 0; i < 5; i++)
         {
-          distCoeffs[1][i] = data[1][i];
+          distCoeffs[0][i] = data[1][i];
         }
         for(int i = 0; i < 3; i++)
         {
-          translationvector[1][i] = data[3][i];
+          translationvector[0][i] = data[3][i];
         }
     }
     Mat Quaternion2RotationMatrix(const double x, const double y, const double z, const double w)

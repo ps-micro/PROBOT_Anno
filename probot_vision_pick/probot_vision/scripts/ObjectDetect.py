@@ -40,6 +40,7 @@ def handle_object_detect(req):
     redObjList    = []
     greenObjList = []
     blueObjList   = []
+    blackObjList = []
     res           = DetectObjectSrvResponse.NOT_DETECTED
 
     HM = rospy.get_param("~hmatrix")

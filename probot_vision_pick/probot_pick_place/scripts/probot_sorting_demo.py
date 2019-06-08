@@ -30,8 +30,8 @@ from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from probot_vision.srv import *
 from probot_msgs.msg import SetOutputIO
 
-pickparam = rospy.get_param("~pick")
-placeparam = rospy.get_param("~place")
+pickparam = rospy.get_param("/probot_sorting/pick")
+placeparam = rospy.get_param("/probot_sorting/place")
 
 class ProbotSorting:
     def __init__(self):
@@ -136,7 +136,7 @@ if __name__=="__main__":
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
 
-        if rosponse.result is not detectobjectionSrvResponse.SUCESS:
+        if response.result is not DetectObjectSrvResponse.SUCCESS:
             rospy.loginfo("No objects detected , waiting detecting.....")
             rate.sleep()
             continue
