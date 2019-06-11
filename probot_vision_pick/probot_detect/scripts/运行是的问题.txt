@@ -1,0 +1,23 @@
+1./usr/bin/env:"python\r":没有那个文件或目录
+   
+    解决办法：重新在ubuntu下新建一个，重新自己敲，因为原来的文档是我在windows上拷过来的
+
+2. 在ROS中运行roslaunch 的时候提示“ERROR： cannot launch node of type [...]: can't locate node [...] in package [...]”
+    
+    解决办法：python文件的权限问题，cd到python文件目录下，运行 sudo chmod +x *.py
+
+3. export PYTHONPATH的作用
+
+    查看解析：https://blog.csdn.net/u013176681/article/details/68484477
+
+4. tensorflow 一个比较好的中文手册网站
+
+    网站网址：https://www.w3cschool.cn/tensorflow_python/tensorflow_python-vhtj2f4p.html
+
+5.生产srv之后我要在另一个包中调用，但是一直跟我说找不到下面的srv模块，查下面发现没有编译生成需要的文件
+
+   https://blog.csdn.net/keyearth/article/details/46327699
+
+对这个包单独编译
+$ catkin_make  -DCATKIN_WHITELIST_PACKAGES="beginner_tutorials"
+

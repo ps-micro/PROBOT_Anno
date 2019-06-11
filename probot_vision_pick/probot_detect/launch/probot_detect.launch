@@ -1,0 +1,14 @@
+<launch>
+
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+
+  <node name="Object_Detect_network" pkg="probot_detect" type="Detector_pick.py" output="screen">
+
+
+  </node>
+
+  <node name="probot_sorting" pkg="probot_pick_place" type="probot_sorting_network.py" output="screen">
+
+  </node>
+
+</launch>

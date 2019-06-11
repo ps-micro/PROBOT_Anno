@@ -1,0 +1,31 @@
+# The detect object service commands robot to find objects pose
+
+# request constants
+int32 ALL_OBJECT    = 1
+int32 RED_OBJECT    = 2
+int32 GREEN_OBJECT  = 3
+int32 BLUE_OBJECT   = 4
+int32 BLACK_OBJECT  = 5
+
+int32 TO_DETECT     = 6
+
+# object type:
+int32 objectType
+
+---
+
+# response constants
+int32 SUCCESS        = 0
+int32 ERROR          = 1
+int32 TIMEOUT        = 2
+int32 NOT_DETECTED   = 3
+int32 NOT_SUPPORT    = 4
+
+# detect result
+int32 result
+geometry_msgs/Pose[] redObjList
+geometry_msgs/Pose[] greenObjList
+geometry_msgs/Pose[] blueObjList
+geometry_msgs/Pose[] blackObjList
+
+geometry_msgs/Pose[] resultList
