@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(probot_pick_place)
+project(probot_ocr)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -11,15 +11,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-
-  moveit_msgs
-  moveit_ros_perception
-  moveit_ros_planning_interface
-  trajectory_msgs
   message_generation
-  probot_ocr
-  probot_vision
-  probot_msgs
+  cv_bridge
+  geometry_msgs
+  sensor_msgs
+  #probot_calibration
+
 )
 
 ## System dependencies are found with CMake's conventions
@@ -63,11 +60,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+ add_service_files(
+   FILES
+   detectobjectionSrv.srv
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -77,10 +73,14 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+   sensor_msgs
+   geometry_msgs
+   #probot_calibration
+   
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -113,8 +113,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES probot_pick_place
-  CATKIN_DEPENDS roscpp rospy std_msgs moveit_core moveit_ros_planning_interface  probot_vision probot_ocr probot_msgs message_runtime
+#  LIBRARIES probot_ocr
+   CATKIN_DEPENDS roscpp rospy std_msgs #probot_calibration
 #  DEPENDS system_lib
 )
 
@@ -127,11 +127,12 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/probot_pick_place.cpp
+#   src/${PROJECT_NAME}/probot_ocr.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -142,7 +143,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/probot_pick_place_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/probot_ocr_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -162,18 +163,26 @@ include_directories(
 #############
 ## Install ##
 #############
+install(PROGRAMS 
+   scripts/Detect_ocr.py
+   scripts/data_util.py
+   scripts/icdar.py
+   scripts/locality_aware_nms.py
+   scripts/model.py
+   scripts/__init__.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-install(PROGRAMS
-   scripts/probot_sorting_demo.py
-   scripts/probot_sorting_network.py
-   scripts/probot_sorting_ocr.py
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
- )
+# install(PROGRAMS
+#   scripts/my_python_script
+#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
@@ -201,7 +210,7 @@ install(PROGRAMS
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_pick_place.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_ocr.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
