@@ -31,9 +31,11 @@ from probot_ocr.srv import *
 from probot_msgs.msg import SetOutputIO
 
 
-putlocation={'H':(0.35374,0.12474),'E':(0.35374,0.05321),'L':(0.35374,-0.02449),'LL':(0.35374,-0.0998),'O':(0.35374,-0.17143),'R':(0.23204,0.12495),'OO':(0.23204,0.046619),'S':(0.23204,-0.026839),'I':(0.23204,-0.10482)}
+putlocation={'H':(0.37536,0.13248),'E':(0.37536,0.053068),'L':(0.37536,-0.0264),'LL':(0.37536,-0.097946),'O':(0.37536,-0.17164),'R':(0.27466,0.12248),'OO':(0.27466,0.033957),'S':(0.27466,-0.052188),'I':(0.27466,-0.12611)}
 
 needangle = {0:0,1:1.57,2:-3.14,3:-1.57}
+
+
 
 class ProbotSorting:
     def __init__(self):
@@ -52,10 +54,7 @@ class ProbotSorting:
 
         # Initialize IO
         self.ioPub = rospy.Publisher('probot_set_output_io', SetOutputIO, queue_size=1)
-
-        self.arm.set_named_target('home')
-        self.arm.go()
-        rospy.sleep(1)
+        
 
         # 移除场景中之前运行残留的物体
         #scene.remove_attached_object(end_effector_link, 'tool')
@@ -85,6 +84,24 @@ class ProbotSorting:
         self.arm.go()
         rospy.sleep(1)
 
+    def moveTo2(self,x,y,z,dx,dy,dz,dw):
+        target_pose = PoseStamped()
+        target_pose.header.frame_id = self.reference_frame
+        target_pose.header.stamp = rospy.Time.now()
+        target_pose.pose.position.x = x
+        target_pose.pose.position.y = y
+        target_pose.pose.position.z = z
+        target_pose.pose.orientation.x = dx
+        target_pose.pose.orientation.y = dy
+        target_pose.pose.orientation.z = dz
+        target_pose.pose.orientation.w = dw
+
+        self.arm.set_start_state_to_current_state()
+        self.arm.set_pose_target(target_pose, self.end_effector_link)
+
+        traj = self.arm.plan()
+        self.arm.execute(traj)
+
     def moveTo(self, x, y, z):
         target_pose = PoseStamped()
         target_pose.header.frame_id = self.reference_frame
@@ -111,8 +128,7 @@ class ProbotSorting:
         self.arm.execute(traj)
 
     def pick(self, x, y):
-        self.moveTo(x, y, 0.28)
-
+        self.moveTo(x, y,0.21)
         ioOutput0 = SetOutputIO()
         ioOutput0.ioNumber = 1
         ioOutput0.status = SetOutputIO.IO_HIGH
@@ -122,7 +138,7 @@ class ProbotSorting:
 
     def tai(self, x, y):
 
-        self.moveTo(x, y, 0.35)
+        self.moveTo(x, y, 0.28)
         ioOutput0 = SetOutputIO()
         ioOutput0.ioNumber = 1
         ioOutput0.status = SetOutputIO.IO_HIGH
@@ -133,18 +149,11 @@ class ProbotSorting:
 
     def place(self, x, y):
 
-        group_variable_values_qian = self.arm.get_current_joint_values()
-        self.moveTo(x,y,0.28)
-        rospy.sleep(0.2)
-        group_variable_values_hou = self.arm.get_current_joint_values()
-        self.ro1(group_variable_values_qian[5],5)
-
-
-        deta = group_variable_values_qian[0] - group_variable_values_hou[0]
-        a = group_variable_values_hou[5] - deta
-        self.ro(a,5)
-        
         self.ro(1.57,5)
+        pose = self.arm.get_current_pose(self.end_effector_link)
+        print pose
+        self.moveTo2(x,y,0.27,pose.pose.orientation.x,pose.pose.orientation.y,pose.pose.orientation.z,pose.pose.orientation.w)
+
         ioOutput0 = SetOutputIO()
         ioOutput0.ioNumber = 1
         ioOutput0.status = SetOutputIO.IO_LOW
@@ -173,30 +182,6 @@ class ProbotSorting:
         # 控制机械臂完成运动
         self.arm.go()
         rospy.sleep(1)
-    def qiren2(self):
-        group_variable_values = self.arm.get_current_joint_values()
-
-        joint_positions = [1.57, group_variable_values[1],group_variable_values[2],group_variable_values[3],group_variable_values[4],group_variable_values[5]]
-        self.arm.set_joint_value_target(joint_positions)
-                 
-        # 控制机械臂完成运动
-        self.arm.go()
-        rospy.sleep(1)
-
-    def ro1(self,angle,num):
-        group_variable_values = self.arm.get_current_joint_values()
-        #print group_variable_values
-        group_variable_values[num] = angle
-        if group_variable_values[num] > 3.14:
-            group_variable_values[num] = -(3.1415926*2 - group_variable_values[num])
-        if group_variable_values[num] < -3.14:
-            group_variable_values[num] = (3.1415926*2 + group_variable_values[num])
-        self.arm.set_joint_value_target(group_variable_values)
-        traj = self.arm.plan()
-        
-        # 按照规划的运动路径控制机械臂运动
-        self.arm.execute(traj)
-        rospy.sleep(1) 
 
     def ro(self,angle,num):
         group_variable_values = self.arm.get_current_joint_values()
@@ -229,12 +214,13 @@ if __name__=="__main__":
             response = object_detect_service(detectobjectionSrvRequest.ALL_OBJECT)
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
-
+        print response.result
+        
         if response.result is not detectobjectionSrvResponse.SUCCESS:
             rospy.loginfo("No objects detected , waiting detecting.....")
             rate.sleep()
             continue
-
+        
         rospy.loginfo("Get object position, Start pick and place")
 
         print response.charObjList
@@ -245,16 +231,15 @@ if __name__=="__main__":
         L = len(response.charObjList)
         for i in range(0,L):
             sort.moveToHome()
-            sort.ro(1.0,0)
-            sort.pick(response.charObjList[i][0],response.charObjList[i][1])
-            sort.tai(response.charObjList[i][0],response.charObjList[i][1])
+            sort.ro(1.57,0)
+            sort.pick(response.charObjList[i].position.x,response.charObjList[i].position.y)
+            sort.tai(response.charObjList[i].position.x,response.charObjList[i].position.y)
             sort.ro(response.angle[i],5)
-            sort.ro(needangle[response.charNum[i]],5)
+            sort.ro(needangle[int(response.charNum[i])],5)
             sort.qiren()
-
             sort.place(putlocation[response.charName[i]][0],putlocation[response.charName[i]][1])
-
             sort.moveToHome()
+        
 
         rate.sleep()
 

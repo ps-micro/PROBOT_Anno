@@ -1,26 +1,61 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(probot_ocr)
+project(probot_calibration)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
   message_generation
   cv_bridge
-  geometry_msgs
+  image_transport
+  roscpp
+  rospy
   sensor_msgs
-  #probot_calibration
+  std_msgs
+  geometry_msgs
+  nodelet
+  tf
 
 )
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(cmake_modules REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(Eigen3 REQUIRED)
+
+
+
+generate_messages(
+   DEPENDENCIES
+   sensor_msgs
+   std_msgs
+   geometry_msgs
+ )
+
+
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES probot_calibration
+  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs message_runtime tf
+  DEPENDS system_lib
+)
+
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+  ${Eigen3_INCLUDE_DIRS}
+)
+
+
+add_executable(CalibrationImage src/CalibrationImage.cpp )
+
+target_link_libraries(CalibrationImage ${catkin_LIBRARIES} ${OpenCV_LIBRARISE}  pthread  -L/usr/local/lib -lopencv_stitching -lopencv_dnn -lopencv_viz -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_photo -lopencv_objdetect -lopencv_shape -lopencv_video -lopencv_ml -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_flann -lopencv_core)
+
+add_dependencies(CalibrationImage ${PROJECT_NAME}_generate_messages_cpp)
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -53,11 +88,6 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
 
 ## Generate services in the 'srv' folder
  add_service_files(
@@ -73,14 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   std_msgs
-   sensor_msgs
-   geometry_msgs
-   #probot_calibration
-   
- )
+
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -111,12 +134,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES probot_ocr
-   CATKIN_DEPENDS roscpp rospy std_msgs #probot_calibration
-#  DEPENDS system_lib
-)
+
 
 ###########
 ## Build ##
@@ -124,16 +142,9 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-)
 
-## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/probot_ocr.cpp
-# )
+
+## Declare a C++ library 
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -143,13 +154,13 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/probot_ocr_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/probot_calibration_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
+#set_target_properties(image PROPERTIES LINKER_LANGUAGE CXX)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -163,22 +174,22 @@ include_directories(
 #############
 ## Install ##
 #############
-install(PROGRAMS 
-   scripts/Detect_ocr.py
-   scripts/data_util.py
-   scripts/icdar.py
-   scripts/locality_aware_nms.py
-   scripts/model.py
-   scripts/__init__.py
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
+install(PROGRAMS 
+   scripts/Detect_ocr.py
+   scripts/icdar.py
+   scripts/locality_aware_nms.py
+   scripts/model.py
+   scripts/init.py
+
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 # install(PROGRAMS
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -210,7 +221,7 @@ install(PROGRAMS
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_ocr.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_calibration.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

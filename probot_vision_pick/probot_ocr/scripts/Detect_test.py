@@ -46,10 +46,6 @@ double Chess2Base[4][4] = {-0.9997623668389658, -0.01776013162391372, 0.01264071
 Mat Pixel2ChessMatrix(3, 3, CV_64FC1, Pixel2Chess);
 Mat Chess2BaseMatrix(4, 4, CV_64FC1, Chess2Base);
 
-#model_path = /home/sijia/OCR/new_east_icdar2015_resnet_v1_50_rbox/
-#template_path = /home/sijia/OCR/templet_image/
-#output_path = /home/sijia/OCR/templet_image/test/
-
 class TOD(object):
     def __init__(self):
 

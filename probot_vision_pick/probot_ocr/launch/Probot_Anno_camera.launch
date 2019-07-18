@@ -1,0 +1,11 @@
+<launch>
+
+    <!-- start the robot -->
+    <include file="$(find probot_bringup)/launch/probot_anno_bringup.launch" >
+        <arg name="robot_ip" value="192.168.2.123" />
+    </include>
+
+    <!-- start the USB -->
+    <include file="$(find probot_ocr)/launch/usb_cam-test.launch" />
+
+</launch>
