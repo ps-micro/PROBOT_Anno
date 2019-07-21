@@ -32,4 +32,12 @@
     </description>
   </class>
 
+  <class name="probot_rviz_plugin/Demo"
+         type="probot_rviz_plugin::DemoPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for demo.
+    </description>
+  </class>
+
 </library>

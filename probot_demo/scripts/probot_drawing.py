@@ -64,10 +64,7 @@ class MoveItCircleDemo:
         star_pose.pose.position.x = 0.40
         star_pose.pose.position.y = 0.0
         star_pose.pose.position.z = 0.12
-        star_pose.pose.orientation.x = 0.707108
-        star_pose.pose.orientation.y = 0.0
-        star_pose.pose.orientation.z = 0.0
-        star_pose.pose.orientation.w = 0.707105
+        star_pose.pose.orientation.x = 1.0
         
         # 设置机械臂终端运动的目标位姿
         arm.set_pose_target(star_pose, end_effector_link)

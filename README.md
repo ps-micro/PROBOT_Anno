@@ -69,6 +69,11 @@ $ echo "source ~/'WORKSPACE_PATH'/install/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
+__Install Librarys__  
+
+1. Install OpenCV   
+
+
 ### __MoveIt! with a simulated robot__  
 You can use MoveIt! to control the simulated robot. 
 

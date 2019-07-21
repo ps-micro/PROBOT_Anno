@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     std::string end_effector_link = arm.getEndEffectorLink();
 
     //设置目标位置所使用的参考坐标系
-    std::string reference_frame = "base_link";
+    std::string reference_frame = "base_footprint";
     arm.setPoseReferenceFrame(reference_frame);
 
     //当运动规划失败后，允许重新规划

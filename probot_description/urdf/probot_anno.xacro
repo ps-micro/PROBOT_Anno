@@ -5,7 +5,7 @@
 
   <link name="base_footprint"/>
   <joint name="joint_0" type="fixed">
-    <origin xyz="0 0 0.0532" rpy="0 0 0" />
+    <origin xyz="0 0 0.02" rpy="0 0 0" />
     <parent link="base_footprint" />
     <child link="base_link" />
   </joint>
@@ -17,7 +17,7 @@
       <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
     </inertial>
     <visual>
-      <origin xyz="0.017266 0 0" rpy="0 0 0" />
+      <origin xyz="0.017266 0 0.0315" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://probot_description/meshes/base_link.STL" />
       </geometry>
@@ -26,7 +26,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.017266 0 0" rpy="0 0 0" />
+      <origin xyz="0.017266 0 0.0315" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://probot_description/meshes/base_link.STL" />
       </geometry>
@@ -56,7 +56,7 @@
     </collision>
   </link>
   <joint name="joint_1" type="revolute">
-    <origin xyz="0 0 0" rpy="1.5708 0 0" />
+    <origin xyz="0 0 0.0315" rpy="1.5708 0 0" />
     <parent link="base_link" />
     <child link="link_1" />
     <axis xyz="0 1 0" />
@@ -146,7 +146,7 @@
     </collision>
   </link>
   <joint name="joint_4" type="revolute">
-    <origin xyz="0.021 0 0.002" rpy="0 0 0" />
+    <origin xyz="0.023 0 0.0" rpy="0 0 0" />
     <parent link="link_3" />
     <child link="link_4" />
     <axis xyz="1 0 0" />
@@ -176,7 +176,7 @@
     </collision>
   </link>
   <joint name="joint_5" type="revolute">
-    <origin xyz="0.20586 0 0" rpy="0 0 0" />
+    <origin xyz="0.20585535 0 0" rpy="0 0 0" />
     <parent link="link_4" />
     <child link="link_5" />
     <axis xyz="0 0 1" />
@@ -215,7 +215,7 @@
 
   <link name="tool0"/>
   <joint name="joint_tool0" type="fixed">
-    <origin xyz="0 -0.013 0" rpy="0 0 0" />
+    <origin xyz="0 -0.013 0" rpy="${M_PI/2} 0 0" />
     <parent link="link_6" />
     <child link="tool0" />
   </joint>

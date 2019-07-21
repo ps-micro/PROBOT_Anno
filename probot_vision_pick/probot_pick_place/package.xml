@@ -71,9 +71,6 @@
   <build_depend>probot_vision</build_depend>
   <exec_depend>probot_vision</exec_depend> 
 
-  <build_depend>probot_ocr</build_depend>
-  <exec_depend>probot_ocr</exec_depend> 
-
 
 
   <build_depend>probot_msgs</build_depend>

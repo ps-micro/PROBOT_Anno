@@ -14,6 +14,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -73,6 +75,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
           base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -195,6 +202,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           gripper_active_finger_bracket_link:
             Alpha: 1
             Show Axes: false
@@ -280,25 +292,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.53613365
+      Distance: 1.72046971
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.113567002
-        Y: 0.105920002
-        Z: 2.23518001e-07
+        X: -0.0163818523
+        Y: 0.16890423
+        Z: 2.83122631e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.399797082
+      Pitch: 0.219797075
       Target Frame: base_footprint
       Value: XYOrbit (rviz)
-      Yaw: 5.37994576
+      Yaw: 5.37994051
     Saved: ~
 Window Geometry:
   Displays:
@@ -316,5 +328,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1828
-  X: 70
-  Y: 24
+  X: -809
+  Y: 100

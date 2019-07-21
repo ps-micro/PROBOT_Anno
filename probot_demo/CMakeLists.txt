@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_perception
   moveit_ros_planning_interface
   trajectory_msgs
+  probot_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -108,7 +109,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES probot_demo
-   CATKIN_DEPENDS roscpp rospy moveit_core moveit_ros_planning_interface
+   CATKIN_DEPENDS roscpp rospy moveit_core moveit_ros_planning_interface probot_msgs
 #  DEPENDS system_lib
 )
 
@@ -173,6 +174,9 @@ target_link_libraries(moveit_revise_trajectory_demo ${catkin_LIBRARIES})
 
 add_executable(moveit_continue_trajectory_demo src/moveit_continue_trajectory_demo.cpp)
 target_link_libraries(moveit_continue_trajectory_demo ${catkin_LIBRARIES})
+
+add_executable(probot_sync_demo src/probot_sync_demo.cpp)
+target_link_libraries(probot_sync_demo ${catkin_LIBRARIES})
 
 #############
 ## Install ##

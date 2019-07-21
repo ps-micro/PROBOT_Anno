@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(probot_calibration)
+project(probot_ocr)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -24,38 +24,6 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(cmake_modules REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
-
-
-
-generate_messages(
-   DEPENDENCIES
-   sensor_msgs
-   std_msgs
-   geometry_msgs
- )
-
-
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES probot_calibration
-  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs message_runtime tf
-  DEPENDS system_lib
-)
-
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-  ${Eigen3_INCLUDE_DIRS}
-)
-
-
-add_executable(CalibrationImage src/CalibrationImage.cpp )
-
-target_link_libraries(CalibrationImage ${catkin_LIBRARIES} ${OpenCV_LIBRARISE}  pthread  -L/usr/local/lib -lopencv_stitching -lopencv_dnn -lopencv_viz -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_photo -lopencv_objdetect -lopencv_shape -lopencv_video -lopencv_ml -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_flann -lopencv_core)
-
-add_dependencies(CalibrationImage ${PROJECT_NAME}_generate_messages_cpp)
-
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -103,6 +71,36 @@ add_dependencies(CalibrationImage ${PROJECT_NAME}_generate_messages_cpp)
 # )
 
 ## Generate added messages and services with any dependencies listed here
+
+generate_messages(
+   DEPENDENCIES
+   sensor_msgs
+   std_msgs
+   geometry_msgs
+ )
+
+
+catkin_package(
+#  INCLUDE_DIRS include
+  LIBRARIES probot_ocr
+  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs message_runtime tf
+#  DEPENDS system_lib
+)
+
+include_directories(
+#  include
+  ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+  ${Eigen3_INCLUDE_DIRS}
+)
+
+
+add_executable(CalibrationImage src/CalibrationImage.cpp )
+
+target_link_libraries(CalibrationImage ${catkin_LIBRARIES} ${OpenCV_LIBRARISE}  pthread  -L/usr/local/lib -lopencv_stitching -lopencv_dnn -lopencv_viz -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_photo -lopencv_objdetect -lopencv_shape -lopencv_video -lopencv_ml -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_flann -lopencv_core)
+
+add_dependencies(CalibrationImage ${PROJECT_NAME}_generate_messages_cpp)
+
 
 
 ################################################

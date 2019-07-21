@@ -17,7 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning_interface
   trajectory_msgs
   message_generation
-  probot_ocr
   probot_vision
   probot_msgs
 )
@@ -114,7 +113,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES probot_pick_place
-  CATKIN_DEPENDS roscpp rospy std_msgs moveit_core moveit_ros_planning_interface  probot_vision probot_ocr probot_msgs message_runtime
+  CATKIN_DEPENDS roscpp rospy std_msgs moveit_core moveit_ros_planning_interface  probot_vision probot_msgs message_runtime
 #  DEPENDS system_lib
 )
 

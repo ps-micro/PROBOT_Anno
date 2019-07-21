@@ -51,14 +51,10 @@ int main(int argc, char **argv)
 
     // 设置机器人终端的目标位置
     geometry_msgs::Pose target_pose;
-    target_pose.orientation.x = 0.70692;
-    target_pose.orientation.y = 0.0;
-    target_pose.orientation.z = 0.0;
-    target_pose.orientation.w = 0.70729;
-
     target_pose.position.x = 0.2593;
     target_pose.position.y = 0.0636;
     target_pose.position.z = 0.1787;
+    target_pose.orientation.x = 1.0;
 
     // 设置机器臂当前的状态作为运动初始状态
     arm.setStartStateToCurrentState();

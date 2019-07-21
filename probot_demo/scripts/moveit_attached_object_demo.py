@@ -59,7 +59,6 @@ class MoveAttachedObjectDemo:
         # 移除场景中之前运行残留的物体
         scene.remove_attached_object(end_effector_link, 'tool')
         scene.remove_world_object('table') 
-        scene.remove_world_object('target')
 
         # 设置桌面的高度
         table_ground = 0.6
@@ -74,7 +73,7 @@ class MoveAttachedObjectDemo:
         
         p.pose.position.x = tool_size[0] / 2.0 - 0.025
         p.pose.position.y = -0.015
-        p.pose.position.z = 0.0
+        p.pose.position.z = 0.015
         p.pose.orientation.x = 0
         p.pose.orientation.y = 0
         p.pose.orientation.z = 0

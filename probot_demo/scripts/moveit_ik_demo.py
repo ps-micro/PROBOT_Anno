@@ -43,7 +43,7 @@ class MoveItIkDemo:
         
         # 设置位置(单位：米)和姿态（单位：弧度）的允许误差
         arm.set_goal_position_tolerance(0.001)
-        arm.set_goal_orientation_tolerance(0.01)
+        arm.set_goal_orientation_tolerance(0.001)
        
         # 设置允许的最大速度和加速度
         arm.set_max_acceleration_scaling_factor(0.5)
@@ -62,10 +62,7 @@ class MoveItIkDemo:
         target_pose.pose.position.x = 0.2593
         target_pose.pose.position.y = 0.0636
         target_pose.pose.position.z = 0.1787
-        target_pose.pose.orientation.x = 0.70692
-        target_pose.pose.orientation.y = 0.0
-        target_pose.pose.orientation.z = 0.0
-        target_pose.pose.orientation.w = 0.70729
+        target_pose.pose.orientation.x = 1.0
         
         # 设置机器臂当前的状态作为运动初始状态
         arm.set_start_state_to_current_state()

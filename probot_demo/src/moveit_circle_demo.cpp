@@ -51,14 +51,10 @@ int main(int argc, char **argv)
 
     // 设置机器人终端的目标位置
     geometry_msgs::Pose target_pose;
-    target_pose.orientation.x = -0.482974;
-    target_pose.orientation.y = 0.517043;
-    target_pose.orientation.z = -0.504953;
-    target_pose.orientation.w = -0.494393;
-
     target_pose.position.x = 0.331958;
     target_pose.position.y = 0.0;
     target_pose.position.z = 0.307887;
+    target_pose.orientation.x = 1.0;
 
     arm.setPoseTarget(target_pose);
     arm.move();
@@ -69,13 +65,13 @@ int main(int argc, char **argv)
 	waypoints.push_back(target_pose);
 
     double centerA = target_pose.position.y;
-    double centerB = target_pose.position.z;
+    double centerB = target_pose.position.x;
     double radius = 0.1;
 
     for(double th=0.0; th<6.28; th=th+0.02)
     {
         target_pose.position.y = centerA + radius * cos(th);
-        target_pose.position.z = centerB + radius * sin(th);
+        target_pose.position.x = centerB + radius * sin(th);
         waypoints.push_back(target_pose);
     }
 

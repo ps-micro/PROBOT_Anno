@@ -24,7 +24,7 @@
         <joint name="joint_5" value="0" />
         <joint name="joint_6" value="0" />
     </group_state>
-   <group_state name="start" group="manipulator">
+    <group_state name="start" group="manipulator">
         <joint name="joint_1" value="0" />
         <joint name="joint_2" value="0" />
         <joint name="joint_3" value="1.5708" />
@@ -32,7 +32,6 @@
         <joint name="joint_5" value="1.5708" />
         <joint name="joint_6" value="0" />
     </group_state>
-
     <group_state name="normal" group="gripper">
         <joint name="gripper_finger_joint" value="0" />
     </group_state>
@@ -45,8 +44,13 @@
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="robot_gripper" parent_link="base_link" group="gripper" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="camera_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link_2" reason="Never" />
+    <disable_collisions link1="camera_link" link2="link_1" reason="Never" />
+    <disable_collisions link1="camera_link" link2="link_2" reason="Never" />
+    <disable_collisions link1="camera_link" link2="link_3" reason="Never" />
+    <disable_collisions link1="camera_link" link2="link_4" reason="Never" />
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="gripper_active_finger_link" reason="Adjacent" />
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="gripper_base_link" reason="Adjacent" />
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="gripper_link" reason="Default" />
@@ -54,6 +58,7 @@
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="gripper_static_finger_link" reason="Never" />
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="link_2" reason="Never" />
     <disable_collisions link1="gripper_active_finger_bracket_link" link2="link_3" reason="Never" />
+    <disable_collisions link1="gripper_active_finger_bracket_link" link2="link_6" reason="Never" />
     <disable_collisions link1="gripper_active_finger_link" link2="gripper_base_link" reason="Default" />
     <disable_collisions link1="gripper_active_finger_link" link2="gripper_link" reason="Never" />
     <disable_collisions link1="gripper_active_finger_link" link2="gripper_static_finger_bracket_link" reason="Never" />

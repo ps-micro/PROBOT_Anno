@@ -64,10 +64,7 @@ class MoveItCircleDemo:
         target_pose.pose.position.x = 0.331958
         target_pose.pose.position.y = 0.0
         target_pose.pose.position.z = 0.307887
-        target_pose.pose.orientation.x = -0.482974
-        target_pose.pose.orientation.y = 0.517043
-        target_pose.pose.orientation.z = -0.504953
-        target_pose.pose.orientation.w = -0.494393
+        target_pose.pose.orientation.x = 1.0
         
         # 设置机械臂终端运动的目标位姿
         arm.set_pose_target(target_pose, end_effector_link)
@@ -80,16 +77,14 @@ class MoveItCircleDemo:
         waypoints.append(target_pose.pose)
 
         centerA = target_pose.pose.position.y
-        centerB = target_pose.pose.position.z
+        centerB = target_pose.pose.position.x
         radius = 0.1
 
         for th in numpy.arange(0, 6.28, 0.02):
             target_pose.pose.position.y = centerA + radius * math.cos(th)
-            target_pose.pose.position.z = centerB + radius * math.sin(th)
+            target_pose.pose.position.x = centerB + radius * math.sin(th)
             wpose = deepcopy(target_pose.pose)
             waypoints.append(deepcopy(wpose))
-
-            #print('%f, %f' % (Y, Z))
 
         fraction = 0.0   #路径规划覆盖率
         maxtries = 100   #最大尝试规划次数

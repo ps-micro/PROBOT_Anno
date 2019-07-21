@@ -6,6 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
+        - /RobotModel1/Links1
+        - /RobotModel1/Links1/tool01
+        - /RobotModel1/Links1/tool01/Position1
+        - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 503
@@ -28,6 +33,8 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: ""
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -59,65 +66,49 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        bottom_link:
+        link_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        grasping_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        gripper_finger_link1:
+        link_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_finger_link2:
+        link_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link0:
+        link_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link1:
+        link_5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link2:
+        link_6:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link3:
+        tool0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        link4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -125,19 +116,46 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_footprint:
+          Value: false
+        base_link:
+          Value: true
+        link_1:
+          Value: false
+        link_2:
+          Value: false
+        link_3:
+          Value: false
+        link_4:
+          Value: false
+        link_5:
+          Value: false
+        link_6:
+          Value: false
+        tool0:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        base_footprint:
+          base_link:
+            link_1:
+              link_2:
+                link_3:
+                  link_4:
+                    link_5:
+                      link_6:
+                        tool0:
+                          {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -163,25 +181,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.44917893
+      Distance: 0.892225981
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.0753315166
-        Y: 0.089518711
-        Z: 0.324588567
+        X: -0.0173402559
+        Y: 0.0343988873
+        Z: 0.262839079
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.479797125
+      Pitch: -0.0502027608
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.513499677
+      Yaw: 0.833496034
     Saved: ~
 Window Geometry:
   Displays:

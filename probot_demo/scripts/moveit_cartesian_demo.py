@@ -36,7 +36,7 @@ class MoveItCartesianDemo:
         arm.allow_replanning(True)
         
         # 设置目标位置所使用的参考坐标系
-        arm.set_pose_reference_frame('base_link')
+        arm.set_pose_reference_frame('base_footprint')
                 
         # 设置位置(单位：米)和姿态（单位：弧度）的允许误差
         arm.set_goal_position_tolerance(0.001)
@@ -56,6 +56,8 @@ class MoveItCartesianDemo:
                                                
         # 获取当前位姿数据最为机械臂运动的起始位姿
         start_pose = arm.get_current_pose(end_effector_link).pose
+
+        print start_pose
                 
         # 初始化路点列表
         waypoints = []
