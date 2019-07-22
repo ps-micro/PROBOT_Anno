@@ -81,6 +81,9 @@
   <exec_depend>image_transport</exec_depend>
   <exec_depend>tf</exec_depend>
 
+  <build_depend>OpenCV</build_depend>
+  <build_export_depend>OpenCV</build_export_depend>
+  <exec_depend>OpenCV</exec_depend>
   <!-- build_depend>probot_calibration</build_depend>
   <exec_depend>probot_calibration</exec_depend --> 
 

@@ -6,14 +6,14 @@
 #include <math.h>
 
 
-#include <opencv2/video.hpp>
-#include <opencv2/opencv.hpp>
+#include <opencv-3.3.1-dev/opencv2/video.hpp>
+#include <opencv-3.3.1-dev/opencv2/opencv.hpp>
 
-#include <opencv2/core/eigen.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/calib3d/calib3d.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#include <opencv-3.3.1-dev/opencv2/core/eigen.hpp>
+#include <opencv-3.3.1-dev/opencv2/core/core.hpp>
+#include <opencv-3.3.1-dev/opencv2/imgproc/imgproc.hpp>
+#include <opencv-3.3.1-dev/opencv2/calib3d/calib3d.hpp>
+#include <opencv-3.3.1-dev/opencv2/highgui/highgui.hpp>
 #include <fstream>
 #include <sstream>
 #include <iostream>

@@ -4,6 +4,8 @@ project(probot_ocr)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
+set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.3.1-dev)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -18,6 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   nodelet
   tf
+  OpenCV
 
 )
 
@@ -97,7 +100,7 @@ include_directories(
 
 add_executable(CalibrationImage src/CalibrationImage.cpp )
 
-target_link_libraries(CalibrationImage ${catkin_LIBRARIES} ${OpenCV_LIBRARISE}  pthread  -L/usr/local/lib -lopencv_stitching -lopencv_dnn -lopencv_viz -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_photo -lopencv_objdetect -lopencv_shape -lopencv_video -lopencv_ml -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_flann -lopencv_core)
+target_link_libraries(CalibrationImage ${catkin_LIBRARIES} ${OpenCV_LIBRARISE})
 
 add_dependencies(CalibrationImage ${PROJECT_NAME}_generate_messages_cpp)
 
