@@ -72,7 +72,9 @@ $ source ~/.bashrc
 __Install Librarys__  
 
 1. Install OpenCV   
-
+```sh
+$ sudo apt-get install ros-kinetic-vision-opencv libopencv-dev python-opencv
+```
 
 ### __MoveIt! with a simulated robot__  
 You can use MoveIt! to control the simulated robot. 
