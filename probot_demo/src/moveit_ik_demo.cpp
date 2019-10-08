@@ -20,7 +20,7 @@ limitations under the License.
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "moveit_fk_demo");
+    ros::init(argc, argv, "moveit_ik_demo");
     ros::AsyncSpinner spinner(1);
     spinner.start();
 

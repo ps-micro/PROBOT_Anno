@@ -19,7 +19,7 @@
     <visual>
       <origin xyz="0.017266 0 0.0315" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/base_link.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -28,7 +28,7 @@
     <collision>
       <origin xyz="0.017266 0 0.0315" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/base_link.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -42,7 +42,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_1.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_1.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -51,7 +51,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_1.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_1.STL" />
       </geometry>
     </collision>
   </link>
@@ -72,7 +72,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_2.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_2.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -81,7 +81,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_2.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_2.STL" />
       </geometry>
     </collision>
   </link>
@@ -102,7 +102,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_3.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_3.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -111,7 +111,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_3.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_3.STL" />
       </geometry>
     </collision>
   </link>
@@ -132,7 +132,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_4.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_4.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -141,7 +141,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_4.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_4.STL" />
       </geometry>
     </collision>
   </link>
@@ -162,7 +162,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_5.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_5.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -171,7 +171,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_5.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_5.STL" />
       </geometry>
     </collision>
   </link>
@@ -192,7 +192,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_6.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_6.STL" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -201,7 +201,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://probot_description/meshes/link_6.STL" />
+        <mesh filename="package://probot_description/meshes/PROBOT_Anno/link_6.STL" />
       </geometry>
     </collision>
   </link>

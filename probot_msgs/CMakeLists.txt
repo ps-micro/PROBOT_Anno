@@ -58,9 +58,13 @@ add_message_files(
   FILES
   JogJoint.msg
   JogPose.msg
+  PredefinedPoint.msg
+  PredefinedPointList.msg
+  InterfaceReturnCode.msg
   IOStatus.msg
   SetOutputIO.msg
   ControllerCtrl.msg
+  DemoCtrl.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -72,6 +76,7 @@ add_message_files(
 
 add_service_files(
   FILES
+  RefreshPointsSrv.srv
   HeartbeatSrv.srv
 )
 

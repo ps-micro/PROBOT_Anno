@@ -66,41 +66,27 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_1:
+        fake_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_2:
+        link1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_3:
+        link2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link_6:
+        link3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -120,40 +106,31 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base_footprint:
-          Value: false
         base_link:
-          Value: true
-        link_1:
           Value: false
-        link_2:
+        fake_link:
           Value: false
-        link_3:
+        link1:
           Value: false
-        link_4:
+        link2:
           Value: false
-        link_5:
-          Value: false
-        link_6:
+        link3:
           Value: false
         tool0:
-          Value: false
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        base_footprint:
-          base_link:
-            link_1:
-              link_2:
-                link_3:
-                  link_4:
-                    link_5:
-                      link_6:
-                        tool0:
-                          {}
+        base_link:
+          link1:
+            link2:
+              fake_link:
+                link3:
+                  tool0:
+                    {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -181,7 +158,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.892225981
+      Distance: 1.40393484
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
