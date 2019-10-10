@@ -17,7 +17,7 @@
     <arg name="planner"  default="ompl" /> <!-- ompl, chomp -->
 
     <!-- Load the URDF into the ROS Parameter Server -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find probot_description)/urdf/probot_anno.xacro'" /> 
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find probot_description)/urdf/PROBOT_Anno/probot_anno.xacro'" /> 
 
     <!-- 运行robot_state_publisher节点，发布tf  -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
