@@ -65,6 +65,7 @@ add_message_files(
   SetOutputIO.msg
   ControllerCtrl.msg
   DemoCtrl.msg
+  SFUVersionNum.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -78,6 +79,7 @@ add_service_files(
   FILES
   RefreshPointsSrv.srv
   HeartbeatSrv.srv
+  SFUCommandCtrl.srv
 )
 
 ## Generate actions in the 'action' folder

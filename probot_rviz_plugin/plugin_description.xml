@@ -8,6 +8,14 @@
     </description>
   </class>
 
+  <class name="probot_rviz_plugin/SFUTool"
+         type="probot_rviz_plugin::SFUToolPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for sfu tool.
+    </description>
+  </class>
+
   <class name="probot_rviz_plugin/Movement"
          type="probot_rviz_plugin::MovementPanel"
          base_class_type="rviz::Panel">

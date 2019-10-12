@@ -108,6 +108,8 @@ install_probot()
     cp -R * ~/probot_anno_ws/src/probot_ros
     
     chmod +x ~/probot_anno_ws/src/probot_ros/probot_demo/scripts/*
+    chmod +x ~/probot_anno_ws/src/probot_ros/probot_driver/bin/*
+    chmod +x ~/probot_anno_ws/src/probot_ros/probot_driver/scripts/*
 
     cd ~/probot_anno_ws
     catkin_make

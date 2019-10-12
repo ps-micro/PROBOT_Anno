@@ -15,6 +15,7 @@
     <arg name="sim"      default="false" />
     <arg name="robot_ip" default="127.0.0.1"/>
     <arg name="planner"  default="ompl" /> <!-- ompl, chomp -->
+    <arg name="sfu"  default="disable" /> 
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find probot_description)/urdf/PROBOT_Anno/probot_anno.xacro'" /> 
@@ -61,6 +62,12 @@
         <node name="probot_io_interface"  pkg="probot_driver" type="probot_io_interface" output="screen"/>
         <node name="probot_log_interface" pkg="probot_driver" type="probot_log_interface" />
         <node name="probot_system_interface" pkg="probot_driver" type="probot_system_interface" output="screen"/>
+
+        <group if="$(eval sfu == 'enable')">
+            <node name="sfu_commander" pkg="probot_driver" type="sfu_commander" output="screen"/>
+            <node name="sfu_server"    pkg="probot_driver" type="sfu_server_start.sh"/>
+        </group>
+
     </group>
 
 
