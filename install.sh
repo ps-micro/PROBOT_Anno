@@ -101,26 +101,28 @@ install_probot()
 {
     echo -e "${Green_font_prefix}Install probot packages ...${Font_color_suffix}"
 
-    rm -rf ~/probot_anno_ws
-    mkdir ~/probot_anno_ws
-    mkdir ~/probot_anno_ws/src
-    mkdir ~/probot_anno_ws/src/probot_ros
-    cp -R * ~/probot_anno_ws/src/probot_ros
-    
-    chmod +x ~/probot_anno_ws/src/probot_ros/probot_demo/scripts/*
-    chmod +x ~/probot_anno_ws/src/probot_ros/probot_driver/bin/*
-    chmod +x ~/probot_anno_ws/src/probot_ros/probot_driver/scripts/*
+    if [ ! -d ~/probot_anno_ws ]; then
+        mkdir ~/probot_anno_ws
+        mkdir ~/probot_anno_ws/src
+        mkdir ~/probot_anno_ws/src/probot_anno
+        cp -R * ~/probot_anno_ws/src/probot_anno
+        
+        chmod +x ~/probot_anno_ws/src/probot_anno/probot_demo/scripts/*
+        chmod +x ~/probot_anno_ws/src/probot_anno/probot_driver/bin/*
+        chmod +x ~/probot_anno_ws/src/probot_anno/probot_driver/scripts/*
 
-    cd ~/probot_anno_ws
-    catkin_make
+        cd ~/probot_anno_ws
+        catkin_make
 
-    cp ~/probot_anno_ws/src/probot_ros/probot_rviz_plugin/plugin/libprobot_rviz_plugin.so ~/probot_anno_ws/devel/lib/libprobot_rviz_plugin.so
-	echo "source ~/probot_anno_ws/devel/setup.bash --extend" >> ~/.bashrc
+	    echo "source ~/probot_anno_ws/devel/setup.bash --extend" >> ~/.bashrc
 
-	source ~/.bashrc
+	    source ~/.bashrc
 
-    echo -e "${Green_font_prefix}PROBOT has installed to $(pwd) 
-Please have a happy journey!${Font_color_suffix}"
+        echo -e "${Green_font_prefix}PROBOT has installed to $(pwd) 
+    Please have a happy journey!${Font_color_suffix}"
+    else
+        echo -e "${Red_font_prefix}The probot_anno_ws folder has existed, please delete and reinstall!${Font_color_suffix}"
+    fi
 }
 
 install_all_environment()
