@@ -6,5 +6,5 @@ DEFAULT_SFU_CLIENT_PORT=6666
 
 # pwd # ~/.ros
 sleep 5
-cd $(rospack find probot_driver)/sfu_server
+cd $(rospack find probot_driver)/bin
 ./SFUServer ${DEFAULT_SFU_CLIENT_IP} ${DEFAULT_SFU_CLIENT_PORT}
