@@ -30,7 +30,7 @@ class MoveItCircleDemo:
         moveit_commander.roscpp_initialize(sys.argv)
 
         # 初始化ROS节点
-        rospy.init_node('moveit_clrcle_demo', anonymous=True)
+        rospy.init_node('moveit_drawing', anonymous=True)
                         
         # 初始化需要使用move group控制的机械臂中的arm group
         arm = MoveGroupCommander('manipulator')
@@ -58,33 +58,41 @@ class MoveItCircleDemo:
         arm.go()
         rospy.sleep(1)
                                                
-        target_pose = PoseStamped()
-        target_pose.header.frame_id = reference_frame
-        target_pose.header.stamp = rospy.Time.now()     
-        target_pose.pose.position.x = 0.331958
-        target_pose.pose.position.y = 0.0
-        target_pose.pose.position.z = 0.307887
-        target_pose.pose.orientation.x = 1.0
+        star_pose = PoseStamped()
+        star_pose.header.frame_id = reference_frame
+        star_pose.header.stamp = rospy.Time.now()     
+        star_pose.pose.position.x = 0.40
+        star_pose.pose.position.y = 0.0
+        star_pose.pose.position.z = 0.12
+        star_pose.pose.orientation.w = 1.0
         
         # 设置机械臂终端运动的目标位姿
-        arm.set_pose_target(target_pose, end_effector_link)
+        arm.set_pose_target(star_pose, end_effector_link)
         arm.go()
+
+        radius  = 0.1
+        centerY = 0.0
+        centerX = 0.40 - radius
 
         # 初始化路点列表
         waypoints = []
+        starPoints = []
+        
+        pose_temp = star_pose
+        for th in numpy.arange(0, 6.2831855, 1.2566371):
+            pose_temp.pose.position.y = -(centerY + radius * math.sin(th))
+            pose_temp.pose.position.x = centerX + radius * math.cos(th)
+            pose_temp.pose.position.z = 0.113
+            wpose = deepcopy(pose_temp.pose)
+            starPoints.append(deepcopy(wpose))
                 
         # 将圆弧上的路径点加入列表
-        waypoints.append(target_pose.pose)
-
-        centerA = target_pose.pose.position.y
-        centerB = target_pose.pose.position.x
-        radius = 0.1
-
-        for th in numpy.arange(0, 6.28, 0.02):
-            target_pose.pose.position.y = centerA + radius * math.cos(th)
-            target_pose.pose.position.x = centerB + radius * math.sin(th)
-            wpose = deepcopy(target_pose.pose)
-            waypoints.append(deepcopy(wpose))
+        waypoints.append(starPoints[0])
+        waypoints.append(starPoints[2])
+        waypoints.append(starPoints[4])
+        waypoints.append(starPoints[1])
+        waypoints.append(starPoints[3])
+        waypoints.append(starPoints[0])
 
         fraction = 0.0   #路径规划覆盖率
         maxtries = 100   #最大尝试规划次数

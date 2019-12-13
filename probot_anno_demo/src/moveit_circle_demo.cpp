@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     target_pose.position.x = 0.331958;
     target_pose.position.y = 0.0;
     target_pose.position.z = 0.307887;
-    target_pose.orientation.x = 1.0;
+    target_pose.orientation.w = 1.0;
 
     arm.setPoseTarget(target_pose);
     arm.move();

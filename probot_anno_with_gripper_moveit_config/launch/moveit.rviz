@@ -70,10 +70,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          base_footprint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           base_link:
             Alpha: 1
             Show Axes: false
@@ -193,10 +189,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          base_footprint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           base_link:
             Alpha: 1
             Show Axes: false
@@ -280,7 +272,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_footprint
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -308,7 +300,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.00999999978
       Pitch: 0.219797075
-      Target Frame: base_footprint
+      Target Frame: base_link
       Value: XYOrbit (rviz)
       Yaw: 5.37994051
     Saved: ~

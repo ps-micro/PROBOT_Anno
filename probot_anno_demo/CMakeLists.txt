@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(probot_demo)
+project(probot_anno_demo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -8,13 +8,13 @@ add_compile_options(-std=c++11)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  moveit_msgs
+  moveit_core
   moveit_ros_perception
   moveit_ros_planning_interface
-  trajectory_msgs
   probot_msgs
+  trajectory_msgs
+  roscpp
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
@@ -74,7 +74,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+#   probot_msgs
 # )
 
 ################################################
@@ -108,8 +108,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES probot_demo
-   CATKIN_DEPENDS roscpp rospy moveit_core moveit_ros_planning_interface probot_msgs
+#  LIBRARIES probot_anno_demo
+   CATKIN_DEPENDS moveit_core moveit_ros_planning_interface probot_msgs roscpp rospy
 #  DEPENDS system_lib
 )
 
@@ -126,7 +126,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/probot_demo.cpp
+#   src/${PROJECT_NAME}/probot_anno_demo.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -137,7 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/probot_demo_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/probot_anno_demo_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -154,29 +154,30 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(moveit_fk_demo src/moveit_fk_demo.cpp)
-target_link_libraries(moveit_fk_demo ${catkin_LIBRARIES})
+add_executable(anno_fk_demo src/moveit_fk_demo.cpp)
+target_link_libraries(anno_fk_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_ik_demo src/moveit_ik_demo.cpp)
-target_link_libraries(moveit_ik_demo ${catkin_LIBRARIES})
+add_executable(anno_ik_demo src/moveit_ik_demo.cpp)
+target_link_libraries(anno_ik_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_cartesian_demo src/moveit_cartesian_demo.cpp)
-target_link_libraries(moveit_cartesian_demo ${catkin_LIBRARIES})
+add_executable(anno_cartesian_demo src/moveit_cartesian_demo.cpp)
+target_link_libraries(anno_cartesian_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_collision_demo src/moveit_collision_demo.cpp)
-target_link_libraries(moveit_collision_demo ${catkin_LIBRARIES})
+add_executable(anno_collision_demo src/moveit_collision_demo.cpp)
+target_link_libraries(anno_collision_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_circle_demo src/moveit_circle_demo.cpp)
-target_link_libraries(moveit_circle_demo ${catkin_LIBRARIES})
+add_executable(anno_circle_demo src/moveit_circle_demo.cpp)
+target_link_libraries(anno_circle_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_revise_trajectory_demo src/moveit_revise_trajectory_demo.cpp)
-target_link_libraries(moveit_revise_trajectory_demo ${catkin_LIBRARIES})
+add_executable(anno_revise_trajectory_demo src/moveit_revise_trajectory_demo.cpp)
+target_link_libraries(anno_revise_trajectory_demo ${catkin_LIBRARIES})
 
-add_executable(moveit_continue_trajectory_demo src/moveit_continue_trajectory_demo.cpp)
-target_link_libraries(moveit_continue_trajectory_demo ${catkin_LIBRARIES})
+add_executable(anno_continue_trajectory_demo src/moveit_continue_trajectory_demo.cpp)
+target_link_libraries(anno_continue_trajectory_demo ${catkin_LIBRARIES})
 
-add_executable(probot_sync_demo src/probot_sync_demo.cpp)
-target_link_libraries(probot_sync_demo ${catkin_LIBRARIES})
+add_executable(anno_sync_demo src/probot_sync_demo.cpp)
+add_dependencies(anno_sync_demo probot_msgs_generate_messages_cpp) 
+target_link_libraries(anno_sync_demo ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -192,11 +193,18 @@ target_link_libraries(probot_sync_demo ${catkin_LIBRARIES})
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-## Mark executables and/or libraries for installation
-# install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+## Mark executables for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
+# install(TARGETS ${PROJECT_NAME}_node
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
+
+## Mark libraries for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
+# install(TARGETS ${PROJECT_NAME}
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 # )
 
 ## Mark cpp header files for installation
@@ -212,38 +220,13 @@ target_link_libraries(probot_sync_demo ${catkin_LIBRARIES})
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
-install(PROGRAMS 
-   scripts/moveit_fk_demo.py
-   scripts/moveit_ik_demo.py
-   scripts/moveit_cartesian_demo.py
-   scripts/moveit_attached_object_demo.py
-   scripts/moveit_circle_demo.py
-   scripts/moveit_revise_trejectory_demo.py
-   scripts/probot_demo.py
-   scripts/probot_drawing.py
-   scripts/test_move.py
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-install(TARGETS
-   moveit_fk_demo 
-   moveit_ik_demo 
-   moveit_cartesian_demo
-   moveit_collision_demo 
-   moveit_circle_demo 
-   moveit_revise_trajectory_demo 
-   moveit_continue_trajectory_demo
-   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
 
 #############
 ## Testing ##
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_demo.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_probot_anno_demo.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

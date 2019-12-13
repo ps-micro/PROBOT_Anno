@@ -1,4 +1,4 @@
-# PROBOT
+# PROBOT Anno
 
 This repository provides ROS support for PROBOT Anno.   
 This repo holds source code for ROS versions Kinetic and Melodic.
@@ -111,7 +111,7 @@ You can use MoveIt! plugin to control the robot.
 Additionally, a simple test script that moves the robot to predefined positions can be executed like this:   
 
 ```sh
-$ rosrun probot_demo test_move.py
+$ rosrun probot_demo probot_demo.py
 ```
 
 <font color=#BC8F8F>__CAUTION__</font> :  

@@ -5,13 +5,6 @@
   <xacro:include filename="$(find probot_description)/urdf/materials.urdf.xacro" />
   <xacro:include filename="$(find probot_description)/urdf/gripper.xacro" />
 
-  <link name="base_footprint"/>
-  <joint name="joint_0" type="fixed">
-    <origin xyz="0 0 0.02" rpy="0 0 0" />
-    <parent link="base_footprint" />
-    <child link="base_link" />
-  </joint>
-
   <link name="base_link">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />

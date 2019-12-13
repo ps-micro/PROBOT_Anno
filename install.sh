@@ -8,7 +8,8 @@
 #	Site: http://www.ps-micro.com/
 #=================================================
 
-default_version="v2.0.0"
+robot_name="anno"
+default_version="v2.1.0"
 
 Green_font_prefix="\033[32m"
 Red_font_prefix="\033[31m"
@@ -101,27 +102,27 @@ install_probot()
 {
     echo -e "${Green_font_prefix}Install probot packages ...${Font_color_suffix}"
 
-    if [ ! -d ~/probot_anno_ws ]; then
-        mkdir ~/probot_anno_ws
-        mkdir ~/probot_anno_ws/src
-        mkdir ~/probot_anno_ws/src/probot_anno
-        cp -R * ~/probot_anno_ws/src/probot_anno
+    if [ ! -d ~/probot_${robot_name}_ws ]; then
+        mkdir ~/probot_${robot_name}_ws
+        mkdir ~/probot_${robot_name}_ws/src
+        mkdir ~/probot_${robot_name}_ws/src/probot_${robot_name}
+        cp -R * ~/probot_${robot_name}_ws/src/probot_${robot_name}
         
-        chmod +x ~/probot_anno_ws/src/probot_anno/probot_demo/scripts/*
-        chmod +x ~/probot_anno_ws/src/probot_anno/probot_driver/bin/*
-        chmod +x ~/probot_anno_ws/src/probot_anno/probot_driver/scripts/*
+        chmod +x ~/probot_${robot_name}_ws/src/probot_${robot_name}/probot_${robot_name}_demo/scripts/*
+        chmod +x ~/probot_${robot_name}_ws/src/probot_${robot_name}/probot_driver/bin/*
+        chmod +x ~/probot_${robot_name}_ws/src/probot_${robot_name}/probot_driver/scripts/*
 
-        cd ~/probot_anno_ws
+        cd ~/probot_${robot_name}_ws
         catkin_make
 
-	    echo "source ~/probot_anno_ws/devel/setup.bash --extend" >> ~/.bashrc
+	    echo "source ~/probot_${robot_name}_ws/devel/setup.bash --extend" >> ~/.bashrc
 
 	    source ~/.bashrc
 
         echo -e "${Green_font_prefix}PROBOT has installed to $(pwd) 
     Please have a happy journey!${Font_color_suffix}"
     else
-        echo -e "${Red_font_prefix}The probot_anno_ws folder has existed, please delete and reinstall!${Font_color_suffix}"
+        echo -e "${Red_font_prefix}The probot_${robot_name}_ws folder has existed, please delete and reinstall!${Font_color_suffix}"
     fi
 }
 

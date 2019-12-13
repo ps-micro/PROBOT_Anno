@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     target_pose.position.x = 0.2593;
     target_pose.position.y = 0.0636;
     target_pose.position.z = 0.1787;
-    target_pose.orientation.x = 1.0;
+    target_pose.orientation.w = 1.0;
 
     // 设置机器臂当前的状态作为运动初始状态
     arm.setStartStateToCurrentState();

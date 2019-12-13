@@ -18,16 +18,19 @@
 import rospy, sys
 import moveit_commander
 from moveit_commander import MoveGroupCommander
-from geometry_msgs.msg import Pose
+from geometry_msgs.msg import Pose, PoseStamped
 from copy import deepcopy
 
-class MoveItCartesianDemo:
+import math
+import numpy
+
+class MoveItCircleDemo:
     def __init__(self):
         # 初始化move_group的API
         moveit_commander.roscpp_initialize(sys.argv)
 
         # 初始化ROS节点
-        rospy.init_node('moveit_cartesian_demo', anonymous=True)
+        rospy.init_node('moveit_clrcle_demo', anonymous=True)
                         
         # 初始化需要使用move group控制的机械臂中的arm group
         arm = MoveGroupCommander('manipulator')
@@ -36,11 +39,12 @@ class MoveItCartesianDemo:
         arm.allow_replanning(True)
         
         # 设置目标位置所使用的参考坐标系
-        arm.set_pose_reference_frame('base_footprint')
+        reference_frame = 'base_link'
+        arm.set_pose_reference_frame('base_link')
                 
         # 设置位置(单位：米)和姿态（单位：弧度）的允许误差
-        arm.set_goal_position_tolerance(0.001)
-        arm.set_goal_orientation_tolerance(0.001)
+        arm.set_goal_position_tolerance(0.01)
+        arm.set_goal_orientation_tolerance(0.01)
         
         # 设置允许的最大速度和加速度
         arm.set_max_acceleration_scaling_factor(0.5)
@@ -54,27 +58,33 @@ class MoveItCartesianDemo:
         arm.go()
         rospy.sleep(1)
                                                
-        # 获取当前位姿数据最为机械臂运动的起始位姿
-        start_pose = arm.get_current_pose(end_effector_link).pose
+        target_pose = PoseStamped()
+        target_pose.header.frame_id = reference_frame
+        target_pose.header.stamp = rospy.Time.now()     
+        target_pose.pose.position.x = 0.331958
+        target_pose.pose.position.y = 0.0
+        target_pose.pose.position.z = 0.307887
+        target_pose.pose.orientation.w = 1.0
+        
+        # 设置机械臂终端运动的目标位姿
+        arm.set_pose_target(target_pose, end_effector_link)
+        arm.go()
 
-        print start_pose
-                
         # 初始化路点列表
         waypoints = []
                 
-        # 将初始位姿加入路点列表
-        waypoints.append(start_pose)
-            
-        # 设置路点数据，并加入路点列表
-        wpose = deepcopy(start_pose)
-        wpose.position.z -= 0.2
-        waypoints.append(deepcopy(wpose))
+        # 将圆弧上的路径点加入列表
+        waypoints.append(target_pose.pose)
 
-        wpose.position.x += 0.1
-        waypoints.append(deepcopy(wpose))
-        
-        wpose.position.y += 0.1
-        waypoints.append(deepcopy(wpose))
+        centerA = target_pose.pose.position.y
+        centerB = target_pose.pose.position.x
+        radius = 0.1
+
+        for th in numpy.arange(0, 6.28, 0.02):
+            target_pose.pose.position.y = centerA + radius * math.cos(th)
+            target_pose.pose.position.x = centerB + radius * math.sin(th)
+            wpose = deepcopy(target_pose.pose)
+            waypoints.append(deepcopy(wpose))
 
         fraction = 0.0   #路径规划覆盖率
         maxtries = 100   #最大尝试规划次数
@@ -83,7 +93,7 @@ class MoveItCartesianDemo:
         # 设置机器臂当前的状态作为运动初始状态
         arm.set_start_state_to_current_state()
  
-        # 尝试规划一条笛卡尔空间下的路径，依次通过所有路点
+        # 尝试规划一条笛卡尔空间下的路径，依次通过所有路点，完成圆弧轨迹
         while fraction < 1.0 and attempts < maxtries:
             (plan, fraction) = arm.compute_cartesian_path (
                                     waypoints,   # waypoint poses，路点列表
@@ -120,6 +130,6 @@ class MoveItCartesianDemo:
 
 if __name__ == "__main__":
     try:
-        MoveItCartesianDemo()
+        MoveItCircleDemo()
     except rospy.ROSInterruptException:
         pass

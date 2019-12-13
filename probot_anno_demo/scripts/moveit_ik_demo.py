@@ -62,7 +62,7 @@ class MoveItIkDemo:
         target_pose.pose.position.x = 0.2593
         target_pose.pose.position.y = 0.0636
         target_pose.pose.position.z = 0.1787
-        target_pose.pose.orientation.x = 1.0
+        target_pose.pose.orientation.w = 1.0
         
         # 设置机器臂当前的状态作为运动初始状态
         arm.set_start_state_to_current_state()

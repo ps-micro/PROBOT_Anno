@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>probot_demo</name>
+  <name>probot_anno_demo</name>
   <version>0.0.0</version>
-  <description>The probot_demo package</description>
+  <description>The probot_anno_demo package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/probot_demo</url> -->
+  <!-- <url type="website">http://wiki.ros.org/probot_anno_demo</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -49,19 +49,22 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>rospy</build_depend>
   <build_depend>moveit_core</build_depend>
   <build_depend>moveit_ros_planning_interface</build_depend>
   <build_depend>probot_msgs</build_depend>
-
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_export_depend>moveit_core</build_export_depend>
+  <build_export_depend>moveit_ros_planning_interface</build_export_depend>
+  <build_export_depend>probot_msgs</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>rospy</exec_depend>
   <exec_depend>moveit_core</exec_depend>
   <exec_depend>moveit_ros_planning_interface</exec_depend>
   <exec_depend>probot_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

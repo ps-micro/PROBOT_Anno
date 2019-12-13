@@ -71,12 +71,9 @@ class MoveAttachedObjectDemo:
         p = PoseStamped()
         p.header.frame_id = end_effector_link
         
-        p.pose.position.x = tool_size[0] / 2.0 - 0.025
-        p.pose.position.y = -0.015
-        p.pose.position.z = 0.015
-        p.pose.orientation.x = 0
-        p.pose.orientation.y = 0
-        p.pose.orientation.z = 0
+        p.pose.position.x = tool_size[0] / 2.0
+        p.pose.position.y = 0
+        p.pose.position.z = -0.015
         p.pose.orientation.w = 1
         
         # 将tool附着到机器人的终端
