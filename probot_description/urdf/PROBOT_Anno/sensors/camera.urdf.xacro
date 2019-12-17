@@ -15,14 +15,14 @@ This link is the base of the arm in which arm is placed
        <collision>
            <origin xyz="0 0 0" rpy="0 0 0"/>
            <geometry>
-           <mesh filename="package://probot_description/meshes/sensors/camera.STL" />
+           <mesh filename="package://probot_description/meshes/PROBOT_Anno/sensors/camera.STL" />
            </geometry>
        </collision> 
 
        <visual>
            <origin xyz="0 0 0" rpy="${-M_PI} 0 ${-M_PI/2}"/>
            <geometry>
-           <mesh filename="package://probot_description/meshes/sensors/camera.STL" />
+           <mesh filename="package://probot_description/meshes/PROBOT_Anno/sensors/camera.STL" />
            </geometry>
            <material name="red"/>
        </visual>
@@ -36,5 +36,5 @@ This link is the base of the arm in which arm is placed
        </inertial>
    </link>
 
-   <xacro:include filename="$(find probot_description)/urdf/sensors/camera.gazebo.xacro"/>
+   <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/sensors/camera.gazebo.xacro"/>
 </robot>

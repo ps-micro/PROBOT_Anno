@@ -4,7 +4,7 @@
 
    <xacro:property name="PI" value="3.14159"/>
    <xacro:property name="DYNAMIXEL_MESH_SCALE" value="0.001"/>
-   <xacro:include filename="$(find probot_description)/urdf/dynamixel_arm_hardware.xacro" />
+   <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/dynamixel_arm_hardware.xacro" />
 
    <xacro:macro name="gripper" params="parent color xyz rpy"> 
 
@@ -34,7 +34,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>

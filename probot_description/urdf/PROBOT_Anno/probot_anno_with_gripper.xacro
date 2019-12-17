@@ -2,8 +2,8 @@
 <robot name="probot_anno" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:property name="M_PI" value="3.1415926536"/>
-  <xacro:include filename="$(find probot_description)/urdf/materials.urdf.xacro" />
-  <xacro:include filename="$(find probot_description)/urdf/gripper.xacro" />
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/materials.urdf.xacro" />
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/gripper.xacro" />
 
   <link name="base_link">
     <inertial>
@@ -241,7 +241,7 @@
 
   <xacro:transmission_block joint_name="gripper_finger_joint"/>
 
-  <xacro:include filename="$(find probot_description)/urdf/sensors/camera.urdf.xacro"/>
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/sensors/camera.urdf.xacro"/>
 
   <!-- ros_control plugin -->
   <gazebo>

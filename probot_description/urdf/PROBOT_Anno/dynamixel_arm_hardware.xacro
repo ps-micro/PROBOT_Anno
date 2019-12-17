@@ -47,7 +47,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F10.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F10.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -82,7 +82,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F10.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F10.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -115,7 +115,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -148,7 +148,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/finger.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/finger.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -201,7 +201,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F3.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F3.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -234,7 +234,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F9.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F9.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -267,7 +267,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F11.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F11.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -300,7 +300,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/ax12.${ARM_MESH_EXT}" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/ax12.${ARM_MESH_EXT}" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="Black"/>
       </visual>
@@ -335,7 +335,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/ax12.${ARM_MESH_EXT}" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/ax12.${ARM_MESH_EXT}" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
          <material name="Black"/>
       </visual>
@@ -370,7 +370,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F3.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F3.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -405,7 +405,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F2.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
@@ -440,7 +440,7 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://probot_description/meshes/gripper/F4.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+          <mesh filename="package://probot_description/meshes/PROBOT_Anno/gripper/F4.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
         </geometry>
         <material name="${color}"/>
       </visual>
