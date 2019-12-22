@@ -9,7 +9,7 @@
 #=================================================
 
 robot_name="anno"
-default_version="v2.1.0"
+default_version="v2.1.1"
 
 Green_font_prefix="\033[32m"
 Red_font_prefix="\033[31m"
