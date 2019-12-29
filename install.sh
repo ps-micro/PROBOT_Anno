@@ -3,13 +3,13 @@
 #=================================================
 #	System Required: Ubuntu 16.04
 #	Description: Install ROS And PROBOT
-#	Version: 2.0.0
+#	Version: 2.1.0
 #	Author: ps-micro
 #	Site: http://www.ps-micro.com/
 #=================================================
 
 robot_name="anno"
-default_version="v2.1.1"
+default_version="v2.1.0"
 
 Green_font_prefix="\033[32m"
 Red_font_prefix="\033[31m"
