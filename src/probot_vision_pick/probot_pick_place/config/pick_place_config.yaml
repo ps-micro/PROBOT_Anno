@@ -1,0 +1,8 @@
+place:
+    redBox:      [0.226, 0.284]
+    greenBox:    [0.226, 0.284]
+    blueBox:     [0.266, 0.284]
+    placehight:  0.10
+pick:
+    hight:       -0.05
+    liftHight:   0.15

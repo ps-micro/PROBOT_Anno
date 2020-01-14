@@ -1,0 +1,13 @@
+# The RefreshPoints service notify system to update the pre-defined points list
+
+int8 ctrlCode
+
+int8 POINTS_GET    = 0
+int8 POINTS_ADD    = 1
+int8 POINTS_UPDATE = 2
+int8 POINTS_DELETE = 3
+
+probot_msgs/PredefinedPointList pointList
+---
+probot_msgs/InterfaceReturnCode code
+probot_msgs/PredefinedPointList pointListFeedback

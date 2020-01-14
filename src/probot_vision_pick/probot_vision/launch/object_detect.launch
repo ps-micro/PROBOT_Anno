@@ -1,0 +1,19 @@
+<launch>
+
+  <include file="$(find probot_vision)/launch/usb_cam.launch" />
+
+  <node name="Object_Detect" pkg="probot_vision" type="ObjectDetect.py" output="screen">
+
+    <!-- load configuration -->
+    <rosparam command="load" file="$(find probot_vision)/config/vision_config.yaml" />
+
+  </node>
+
+  <node name="probot_sorting" pkg="probot_pick_place" type="probot_sorting_demo.py" output="screen">
+
+    <!-- load configuration -->
+    <rosparam command="load" file="$(find probot_pick_place)/config/pick_place_config.yaml" />
+
+  </node>
+
+</launch>

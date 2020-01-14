@@ -1,0 +1,24 @@
+image:
+    boundary:          0.26
+    debug:             0
+    objectSizeLimit:   [400, 1500]
+    detectRegionLimit: [500, 800, 60, 360]
+    zeroPosition:      [0.145469403, -0.4634773296]
+    distanceFactor:    [0.0007164801, 0.0007108548]
+redObj:
+    lowerHSV:          [0,164,162]
+    highHSV:           [11,255,211]
+    objectColorBGR:    [60, 90, 170]
+    detectBoundary:    40
+greenObj:
+    lowerHSV:          [36,140,114]
+    highHSV:           [255,179,149]
+    objectColorBGR:    [90, 150, 120]
+    detectBoundary:    40
+blueObj:
+    lowerHSV:          [67,143,162]
+    highHSV:           [119,255,211]
+    objectColorBGR:    [170, 110, 70]
+    detectBoundary:    40
+
+

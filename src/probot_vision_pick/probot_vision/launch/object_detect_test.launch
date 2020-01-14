@@ -1,0 +1,12 @@
+<launch>
+
+  <include file="$(find probot_vision)/launch/usb_cam.launch" />
+
+  <node name="object_detect" pkg="probot_vision" type="object_detect_test.py" output="screen">
+
+    <!-- load configuration -->
+    <rosparam command="load" file="$(find probot_vision)/config/vision_config.yaml" />
+
+  </node>
+
+</launch>
