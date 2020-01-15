@@ -116,3 +116,18 @@ $ rosrun probot_demo probot_demo.py
 
 <font color=#BC8F8F>__CAUTION__</font> :  
 Remember that you should always have your hands on the big red button in case there is something in the way or anything unexpected happens.
+
+### __References__
+* Video tutorials (https://www.bilibili.com/video/av53771128) 
+* Video tutorials (https://www.youtube.com/channel/UC9u5Kxi3EilmO7TVy4nK7VQ/videos)
+* Video tutorials (https://www.youtube.com/channel/UCLT-Ztr3dPSCR1tJOWE2CSQ/videos)
+* Manuals Probot Anno (https://github.com/ps-micro/PROBOT_Anno/tree/master/docs)
+* Moveit! tutorials (https://docs.ros.org/kinetic/api/moveit_tutorials/html/index.html)   
+* ROS Wiki - PROBOT (https://wiki.ros.org/robots/probot_anno)   
+* Github PROBOT (https://github.com/ps-micro/PROBOT_Anno)   
+* Email (support@ps-micro.com)
+* Website (www.ps-micro.com)
+* (www.gyh.ai)
+
+
+
