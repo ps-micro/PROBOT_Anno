@@ -8,7 +8,7 @@
   <author email="huchunxu@ps-micro.com">Hu Chunxu</author>
   <maintainer email="huchunxu@ps-micro.com">Hu Chunxu</maintainer>
 
-  <license>Apache V2.0</license>
+  <license>BSD</license>
 
   <url type="website">http://moveit.ros.org/</url>
   <url type="bugtracker">https://github.com/ros-planning/moveit/issues</url>

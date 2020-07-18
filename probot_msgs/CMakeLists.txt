@@ -61,11 +61,12 @@ add_message_files(
   PredefinedPoint.msg
   PredefinedPointList.msg
   InterfaceReturnCode.msg
-  IOStatus.msg
+  ProbotStatus.msg
   SetOutputIO.msg
   ControllerCtrl.msg
   DemoCtrl.msg
   SFUVersionNum.msg
+  Config.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -80,6 +81,7 @@ add_service_files(
   RefreshPointsSrv.srv
   HeartbeatSrv.srv
   SFUCommandCtrl.srv
+  RefreshConfigSrv.srv
 )
 
 ## Generate actions in the 'action' folder

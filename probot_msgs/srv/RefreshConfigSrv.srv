@@ -1,0 +1,11 @@
+# The SetConfig service set system configuration data
+
+int8 ctrlCode
+
+int8 CONFIG_GET    = 0
+int8 CONFIG_SET    = 1
+
+probot_msgs/Config config
+---
+probot_msgs/InterfaceReturnCode code
+probot_msgs/Config config_feedback

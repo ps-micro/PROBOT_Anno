@@ -2,10 +2,7 @@
 
   <include file="$(find probot_anno_moveit_config)/launch/planning_context.launch" />
 
-  <arg name="planner" default="ompl" />
-
   <arg name="gazebo" default="false" />
-
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
@@ -44,7 +41,7 @@
 
   <!-- Planning Functionality -->
   <include ns="move_group" file="$(find probot_anno_moveit_config)/launch/planning_pipeline.launch.xml">
-    <arg name="pipeline" value="$(arg planner)" />
+    <arg name="pipeline" value="ompl" />
   </include>
 
   <!-- Trajectory Execution Functionality -->

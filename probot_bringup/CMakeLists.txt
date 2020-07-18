@@ -193,7 +193,7 @@ install(DIRECTORY
 
 install(PROGRAMS
   driver/probot_cmd_interface
-  driver/probot_io_interface
+  driver/probot_status_interface
   driver/probot_log_interface
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

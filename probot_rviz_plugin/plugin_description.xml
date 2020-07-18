@@ -12,7 +12,7 @@
          type="probot_rviz_plugin::SFUToolPanel"
          base_class_type="rviz::Panel">
     <description>
-      A panel widget for sfu tool.
+      A panel widget for onekey sfu tool.
     </description>
   </class>
 
@@ -29,6 +29,14 @@
          base_class_type="rviz::Panel">
     <description>
       A panel widget for IO.
+    </description>
+  </class>
+  
+  <class name="probot_rviz_plugin/ConfigPanel"
+         type="probot_rviz_plugin::ConfigPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget allowing system configuration.
     </description>
   </class>
 

@@ -18,11 +18,11 @@ limitations under the License.
 #include <moveit/move_group_interface/move_group_interface.h>
 
 #include <probot_msgs/SetOutputIO.h>
-#include <probot_msgs/IOStatus.h>
+#include <probot_msgs/ProbotStatus.h>
 
 bool startFlag_ = false;
 
-void ioStatusCallback(const probot_msgs::IOStatus::ConstPtr& msg)
+void probotStatusCallback(const probot_msgs::ProbotStatus::ConstPtr& msg)
 {
     if(msg->inputIOs[0] == 1)
         startFlag_ = true;
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 
     ros::NodeHandle n;
     ros::Publisher ioPub = n.advertise<probot_msgs::SetOutputIO>("probot_set_output_io", 1);
-    ros::Subscriber sub = n.subscribe("probot_io_status", 1, ioStatusCallback);
+    ros::Subscriber sub = n.subscribe("probot_status", 1, probotStatusCallback);
 
     // 控制机械臂先回到初始化位置
     arm.setNamedTarget("home");
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
         ROS_INFO("Wait Start Flag!");
 
         probot_msgs::SetOutputIO ioOutput1;
-        ioOutput1.ioNumber = 1;
+        ioOutput1.mask = 1;
         ioOutput1.status = 1;
         ioPub.publish(ioOutput1);
 
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
         arm.setJointValueTarget(lastPoint2);
         arm.move();
 
-        ioOutput1.ioNumber = 1;
+        ioOutput1.mask = 1;
         ioOutput1.status = 0;
         ioPub.publish(ioOutput1);
 

@@ -13,9 +13,10 @@
     <!-- the "sim" argument controls whether we connect to a Simulated or Real robot -->
     <!--  - if sim=false, a robot_ip argument is required -->
     <arg name="sim"      default="false" />
-    <arg name="robot_ip" default="127.0.0.1"/>
-    <arg name="planner"  default="ompl" /> <!-- ompl, chomp -->
+    <arg name="robot_ip" default="192.168.2.123"/>
     <arg name="sfu"  default="disable" /> 
+    <arg name="blockly"  default="disable" />
+    <arg name="rviz"     default="enable" />
 
     <!-- Load the URDF into the ROS Parameter Server -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find probot_description)/urdf/PROBOT_Anno/probot_anno.xacro'" /> 
@@ -33,7 +34,6 @@
 
     <include file="$(find probot_anno_moveit_config)/launch/move_group.launch">
         <arg name="publish_monitored_planning_scene" value="true" />
-        <arg name="planner" value="$(arg planner)"/>
     </include>
 
     <!-- run the robot simulator and action interface nodes -->
@@ -49,26 +49,35 @@
     <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action ntes -->
     <!--   - replace these calls with appropriate robot-specific calls or launch files -->
     <group unless="$(arg sim)">
-        <include file="$(find probot_anno_moveit_config)/launch/moveit_rviz.launch">
-            <arg name="config" value="true"/>
-            <arg name="command_args" value="-d $(find probot_bringup)/config/PROBOT_Anno.rviz"/>
-        </include>
+        <group if="$(eval rviz == 'enable')">
+            <include file="$(find probot_anno_moveit_config)/launch/moveit_rviz.launch">
+                <arg name="config" value="true"/>
+                <arg name="command_args" value="-d $(find probot_bringup)/config/PROBOT_Anno.rviz"/>
+            </include>
+        </group>
 
         <include file="$(find industrial_robot_client)/launch/robot_interface_download.launch">
             <arg name="robot_ip" value="$(arg robot_ip)"/>
         </include>
 
         <node name="probot_cmd_interface" pkg="probot_driver" type="probot_cmd_interface" output="screen"/>
-        <node name="probot_io_interface"  pkg="probot_driver" type="probot_io_interface" output="screen"/>
+        <node name="probot_status_interface"  pkg="probot_driver" type="probot_status_interface" output="screen"/>
         <node name="probot_log_interface" pkg="probot_driver" type="probot_log_interface" />
         <node name="probot_system_interface" pkg="probot_driver" type="probot_system_interface" output="screen"/>
 
         <group if="$(eval sfu == 'enable')">
             <node name="sfu_commander" pkg="probot_driver" type="sfu_commander" output="screen"/>
-            <node name="sfu_server"    pkg="probot_driver" type="sfu_server_start.sh"/>
+            <node name="sfu_server" pkg="probot_driver" type="sfu_server_start.sh" args="$(arg robot_ip)"/>
         </group>
 
+        <group if="$(eval sfu == 'enable_native')">
+            <node name="sfu_commander" pkg="probot_driver" type="sfu_commander" output="screen"/>
+            <node name="sfu_server" pkg="probot_driver" type="sfu_server_start.sh" args="$(arg robot_ip) 0"/>
+        </group>
     </group>
 
-
+    <!-- run probot_blockly nodes and blockly daemon -->
+    <group if="$(eval blockly == 'enable')">
+        <include file="$(find probot_blockly)/launch/probot_blockly.launch"/>
+    </group>
 </launch>

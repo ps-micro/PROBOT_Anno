@@ -26,9 +26,7 @@ OSDescription=$(lsb_release -d --short)
 
 check_system_version()
 {
-    if [[ "${OSVersion}"   == "14.04" ]]; then
-        ROS_Ver="indigo"
-    elif [[ "${OSVersion}" == "16.04" ]]; then
+    if [[ "${OSVersion}" == "16.04" ]]; then
         ROS_Ver="kinetic"
     elif [[ "${OSVersion}" == "18.04" ]]; then
         ROS_Ver="melodic"
@@ -93,6 +91,9 @@ install_probot_dependents()
     sudo apt-get -y install ros-${ROS_Ver}-ros-control ros-${ROS_Ver}-ros-controllers
     sudo apt-get -y install ros-${ROS_Ver}-trac-ik-kinematics-plugin
     sudo apt-get -y install ros-${ROS_Ver}-usb-cam
+    sudo apt-get -y install ros-${ROS_Ver}-realsense-camera ros-${ROS_Ver}-realsense2-camera
+    sudo apt-get -y install python3-pip ros-${ROS_Ver}-mavros
+    sudo pip3 install pyyaml numpy rospkg autobahn
 
     echo -e "${Green_font_prefix}Dependent packages have installed finished.${Font_color_suffix}"
 }
@@ -116,6 +117,7 @@ install_probot()
         catkin_make
 
 	    echo "source ~/probot_${robot_name}_ws/devel/setup.bash --extend" >> ~/.bashrc
+	    echo "export LD_LIBRARY_PATH=\"~/probot_${robot_name}_ws/src/probot_${robot_name}/probot_rviz_plugin/lib/moveIt\":${LD_LIBRARY_PATH}" >> ~/.bashrc
 
 	    source ~/.bashrc
 

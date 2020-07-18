@@ -57,6 +57,8 @@ class GraspingDemo
      * @brief image_sub_ subscribes to image/raw topic
      */
 	image_transport::Subscriber image_sub_;
+
+    image_transport::Publisher image_pub_;
 	/**
      * @brief boolean to control the grasping movements
      */

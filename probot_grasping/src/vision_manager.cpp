@@ -22,7 +22,7 @@ VisionManager::VisionManager(float length, float breadth)
 	this->table_breadth = breadth;
 }
 
-void VisionManager::get2DLocation(cv::Mat img, float &x, float &y)
+cv::Mat VisionManager::get2DLocation(cv::Mat img, float &x, float &y)
 {
 	this->curr_img = img;
 	img_centre_x_ = img.rows / 2;
@@ -32,8 +32,10 @@ void VisionManager::get2DLocation(cv::Mat img, float &x, float &y)
 
 	detectTable(tablePos);
 
-	detect2DObject(x, y, tablePos);
+	cv::Mat image = detect2DObject(x, y, tablePos);
 	convertToMM(x, y);
+
+	return image;
 }
 
 void VisionManager::detectTable(cv::Rect &tablePos)
@@ -103,7 +105,7 @@ void VisionManager::detectTable(cv::Rect &tablePos)
 	// cv::waitKey(100);
 }
 
-void VisionManager::detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tablePos)
+cv::Mat VisionManager::detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tablePos)
 {
 	// Implement Color Thresholding and contour findings to get the location of object to be grasped in 2D
 	cv::Mat image, gray_image_green;
@@ -172,9 +174,11 @@ void VisionManager::detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tab
 		cv::drawContours(image, contours, i, color, 1, 8, hierarchy, 0, cv::Point());
 	}
 
-	// cv::namedWindow("Centre point", cv::WINDOW_AUTOSIZE);
-	// cv::imshow("Centre point", image);
-	// cv::waitKey(100);
+	//cv::namedWindow("Centre point", cv::WINDOW_AUTOSIZE);
+	//cv::imshow("Centre point", image);
+	//cv::waitKey(100);
+
+	return image;
 }
 
 void VisionManager::convertToMM(float &x, float &y)

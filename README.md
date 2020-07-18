@@ -87,7 +87,7 @@ There are launch files available to bringup a simulated robot.
 
 To bring up the simulated robot in Gazebo and moveit, run:   
 ```sh
-$ roslaunch probot_gazebo probot_anno_bringup_moveit.launch
+$ roslaunch probot_anno_moveit_config demo_gazebo.launch
 ```
 
 To bring up the grasping simulated demo, run:   

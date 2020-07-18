@@ -58,6 +58,7 @@ GraspingDemo::GraspingDemo(ros::NodeHandle n_, float pregrasp_x, float pregrasp_
 
   // Subscribe to input video feed and publish object location
   image_sub_ = it_.subscribe("/probot_anno/camera/image_raw", 1, &GraspingDemo::imageCb, this);
+  image_pub_ = it_.advertise("/probot_anno/camera/image_detect", 1);
 }
 
 void GraspingDemo::imageCb(const sensor_msgs::ImageConstPtr &msg)
@@ -77,7 +78,7 @@ void GraspingDemo::imageCb(const sensor_msgs::ImageConstPtr &msg)
 
     // ROS_INFO("Image Message Received");
     float obj_x, obj_y;
-    vMng_.get2DLocation(cv_ptr->image, obj_x, obj_y);
+    cv::Mat detectImage = vMng_.get2DLocation(cv_ptr->image, obj_x, obj_y);
 
     // Temporary Debugging
     std::cout<< " X-Co-ordinate in Camera Frame :" << obj_x << std::endl;
@@ -89,6 +90,13 @@ void GraspingDemo::imageCb(const sensor_msgs::ImageConstPtr &msg)
 
     obj_robot_frame = camera_to_robot_ * obj_camera_frame;
     grasp_running = true;
+    
+
+    cv_bridge::CvImage out_msg;
+    out_msg.encoding = sensor_msgs::image_encodings::RGB8; // Or whatever
+    out_msg.image    = detectImage; // Your cv::Mat
+
+    image_pub_.publish(out_msg.toImageMsg());
 
     // Temporary Debugging
     std::cout<< " X-Co-ordinate in Robot Frame :" << obj_robot_frame.getX() << std::endl;
@@ -147,7 +155,6 @@ void GraspingDemo::attainObject()
   attainPosition(obj_robot_frame.getX(), obj_robot_frame.getY(), obj_robot_frame.getZ() + 0.04);
 
   // Open Gripper
-  ros::WallDuration(1.0).sleep();
   grippergroup.setNamedTarget("open");
   grippergroup.move();
 
@@ -158,7 +165,7 @@ void GraspingDemo::attainObject()
   target_pose1.orientation = currPose.pose.orientation;
   target_pose1.position = currPose.pose.position;
 
-  target_pose1.position.z = obj_robot_frame.getZ() - 0.02;
+  target_pose1.position.z = obj_robot_frame.getZ() - 0.03;
   armgroup.setPoseTarget(target_pose1);
   armgroup.move();
 }
@@ -167,9 +174,9 @@ void GraspingDemo::grasp()
 {
   // ROS_INFO("The Grasping function called");
 
-  ros::WallDuration(1.0).sleep();
   grippergroup.setNamedTarget("close");
   grippergroup.move();
+  ros::WallDuration(1.0).sleep();
 }
 
 void GraspingDemo::lift()
@@ -184,7 +191,9 @@ void GraspingDemo::lift()
   target_pose1.position = currPose.pose.position;
 
   // Starting Postion after picking
-  //target_pose1.position.z = target_pose1.position.z + 0.06;
+  target_pose1.position.z = target_pose1.position.z + 0.06;
+  armgroup.setPoseTarget(target_pose1);
+  armgroup.move();
 
   if(rand() % 2)
   {
@@ -194,12 +203,14 @@ void GraspingDemo::lift()
   {
     target_pose1.position.y = target_pose1.position.y - 0.02;
   }
-  
+  armgroup.setPoseTarget(target_pose1);
+  armgroup.move();
+
+  target_pose1.position.z = target_pose1.position.z - 0.06;
   armgroup.setPoseTarget(target_pose1);
   armgroup.move();
 
   // Open Gripper
-  ros::WallDuration(1.0).sleep();
   grippergroup.setNamedTarget("open");
   grippergroup.move();
 

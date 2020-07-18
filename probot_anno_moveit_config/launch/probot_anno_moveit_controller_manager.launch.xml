@@ -1,17 +1,19 @@
 <launch>
-    <arg name="gazebo" default="false" />
 
-    <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
-    <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+  <arg name="gazebo" default="false" />
 
-    <group if="$(arg gazebo)">
-        <!-- gazebo Controller -->
-        <rosparam file="$(find probot_anno_moveit_config)/config/controllers_gazebo.yaml"/>
-    </group>
-    <group unless="$(arg gazebo)">
-        <!-- ROS-I Controller -->
-        <rosparam file="$(find probot_anno_moveit_config)/config/controllers.yaml"/>
-    </group>
+  <!-- loads moveit_controller_manager on the parameter server which is taken as argument 
+    if no argument is passed, moveit_simple_controller_manager will be set -->
+  <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+  <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
 
+  <!-- loads ros_controllers to the param server -->
+  <group if="$(arg gazebo)">
+    <!-- gazebo Controller -->
+    <rosparam file="$(find probot_anno_moveit_config)/config/ros_controllers.yaml"/>
+  </group>
+  <group unless="$(arg gazebo)">
+    <!-- ROS-I Controller -->
+    <rosparam file="$(find probot_anno_moveit_config)/config/controllers.yaml"/>
+  </group>
 </launch>
-

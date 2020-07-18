@@ -4,11 +4,13 @@
   <xacro:property name="M_PI" value="3.1415926536"/>
   <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/materials.urdf.xacro" />
   <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/gripper.xacro" />
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/sensors/d435.urdf.xacro" />
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/sensors/realsense.gazebo.xacro"/>
 
   <link name="base_link">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="0.01" />
+      <mass value="0.8" />
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
     </inertial>
     <visual>
@@ -31,7 +33,7 @@
   <link name="link_1">
     <inertial>
       <origin xyz="-0.010934 0.23134 0.0051509" rpy="0 0 0" />
-      <mass value="0.01" />
+      <mass value="0.5" />
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
     </inertial>
     <visual>
@@ -241,12 +243,14 @@
 
   <xacro:transmission_block joint_name="gripper_finger_joint"/>
 
-  <xacro:include filename="$(find probot_description)/urdf/PROBOT_Anno/sensors/camera.urdf.xacro"/>
+  <sensor_d435 parent="base_link">
+    <origin xyz="0.3 0 0.7" rpy="0 ${M_PI/2} 0"/>
+  </sensor_d435>
 
   <!-- ros_control plugin -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/probot_anno</robotNamespace>
+      <robotNamespace>/</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>
     </plugin>

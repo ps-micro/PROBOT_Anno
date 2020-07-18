@@ -3,4 +3,6 @@
 string name
 geometry_msgs/Pose pose
 float64[] joints
-uint8 digitalOutput
+uint32 digitalOutput
+uint32 relayOutput
+float64 pointDelayBeforeExecute

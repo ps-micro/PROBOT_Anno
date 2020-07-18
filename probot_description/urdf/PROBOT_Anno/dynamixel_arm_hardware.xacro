@@ -59,6 +59,14 @@
         </geometry>
       </collision>
     </link>
+
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="bioloid_F10_revolute" params="parent name color llimit ulimit vlimit *origin *axis">
@@ -94,6 +102,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="bioloid_F2_fixed" params="parent name color *origin">
@@ -127,6 +142,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
 
   <xacro:macro name="finger" params="parent name color *origin">
@@ -213,6 +235,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="bioloid_F9_fixed" params="parent name color *origin">
@@ -246,6 +275,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="bioloid_F11_fixed" params="parent name color *origin">
@@ -279,6 +315,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
 
   <xacro:macro name="dynamixel_AX12_fixed" params="parent name *origin">
@@ -312,6 +355,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="dynamixel_AX12_revolute" params="parent name llimit ulimit vlimit *origin *axis">
@@ -347,6 +397,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
   
   <xacro:macro name="bioloid_F3_revolute" params="parent name color llimit ulimit vlimit *origin *axis">
@@ -382,6 +439,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
 
   <xacro:macro name="bioloid_F2_revolute" params="parent name color llimit ulimit vlimit *origin *axis">
@@ -417,6 +481,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
 
   <xacro:macro name="bioloid_F4_revolute" params="parent name color llimit ulimit vlimit *origin *axis">
@@ -452,6 +523,13 @@
         </geometry>
       </collision>
     </link>
+        <gazebo reference="${name}_link">
+            <implicitSpringDamper>1</implicitSpringDamper>
+            <mu1>100000</mu1>
+            <mu2>100000</mu2>
+            <kp>100000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo> 
   </xacro:macro>
 
 </robot>

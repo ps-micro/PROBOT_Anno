@@ -40,7 +40,7 @@ class VisionManager
 	 * @param      x     x postion of the object
 	 * @param      y     y position of the object
 	 */
-	void get2DLocation(cv::Mat img, float &x, float &y);
+	cv::Mat get2DLocation(cv::Mat img, float &x, float &y);
 
   private:
 	/**
@@ -49,7 +49,7 @@ class VisionManager
  	 * @param      pixel_x  postion of the object in x-pixels
  	 * @param      pixel_y  positino of the object in y-pixels
  	 */
-	void detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tablePos);
+	cv::Mat detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tablePos);
 	/**
 	 * @brief      convertToMM converts pixel measurement to metric
 	 *
